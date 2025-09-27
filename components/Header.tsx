@@ -95,7 +95,7 @@ export default function Header({ isMenuOpen, toggleMenu, locale, t, toggleLocale
 
     return (
         <header className={headerClass}>
-            <div className="container mx-auto flex justify-between items-center h-20 px-4 md:px-8">
+            <div className="bg-emerald-500 container mx-auto flex justify-between items-center h-20 px-4 md:px-8">
 
                 {/* โลโก้ */}
                 <Link href="/" onClick={() => isMenuOpen && toggleMenu()}>
