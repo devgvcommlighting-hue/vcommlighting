@@ -1,0 +1,15 @@
+{
+    "header": {
+        "home": "HOME",
+        "about": "ABOUT US",
+        "products": "PRODUCTS",
+        "service": "SERVICE",
+        "news": "NEWS",
+        "contact": "CONTACT US"
+    },
+    "hero": {
+        "tagline_line1": "HIGH QUALITY",
+        "tagline_line2": "DAIRY INGREDIENTS",
+        "button": "Dairy Products"
+    }
+}

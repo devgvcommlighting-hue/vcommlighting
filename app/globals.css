@@ -24,3 +24,71 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer utilities {
+
+  /* Keyframes สำหรับ Fade In Up */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 40px, 0);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  /* Utility Class สำหรับ Fade In Up Animation */
+  .animate-fadeInUp {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+    /* เริ่มต้นด้วยความโปร่งใส 0 */
+  }
+
+  /* Utility Class สำหรับการหน่วงเวลา (Delay) */
+  .animate-delay-100 {
+    animation-delay: 0.1s;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 0.5s;
+  }
+}
+
+@layer utilities {
+
+  /* Keyframes สำหรับ Fade In Up (ที่เราเพิ่มไปก่อนหน้านี้) */
+  @keyframes fadeInUp {
+    /* ... */
+  }
+
+  /* Utility Class สำหรับ Fade In Up Animation */
+  .animate-fadeInUp {
+    /* ... */
+  }
+
+  /* ... */
+
+  /* --- Keyframes สำหรับ Logo Slider --- */
+  @keyframes slide {
+    from {
+      transform: translateX(0);
+      /* เริ่มต้นที่ตำแหน่ง 0 */
+    }
+
+    to {
+      /* เลื่อนไปทางซ้ายเท่ากับความกว้างของโลโก้ชุดแรก (50%) */
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Utility Class สำหรับ Logo Slider Animation */
+  .animate-slide {
+    animation: slide 30s linear infinite;
+    /* 30s คือความเร็ว, linear คือความสม่ำเสมอ, infinite คือทำซ้ำไม่สิ้นสุด */
+    width: max-content;
+    /* สำคัญ: ต้องกว้างพอที่จะบรรจุโลโก้ซ้ำกัน 2 ชุด */
+  }
+}

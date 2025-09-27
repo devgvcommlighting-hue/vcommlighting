@@ -1,0 +1,15 @@
+{
+    "header": {
+        "home": "หน้าหลัก",
+        "about": "เกี่ยวกับเรา",
+        "products": "สินค้า",
+        "service": "บริการ",
+        "news": "ข่าวสาร",
+        "contact": "ติดต่อเรา"
+    },
+    "hero": {
+        "tagline_line1": "Energy Ecosystem",
+        "tagline_line2": "Energy saving",
+        "button": "LED lighting"
+    }
+}
