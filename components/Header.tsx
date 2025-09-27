@@ -6,7 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // *** 1. Translation Data และ Type Definitions ***
-// Type เหล่านี้จำเป็นต้องถูก Export เพื่อให้ RootLayoutProvider.tsx และ Sidebar.tsx นำไปใช้
 const translations = {
     en: {
         header: {
@@ -16,7 +15,7 @@ const translations = {
             service: 'Service',
             news: 'News',
             contact: 'Contact Us',
-            toggleMenu: 'Toggle menu', 
+            toggleMenu: 'Header Menu', 
             switchToThai: 'Switch to Thai',
             switchToEnglish: 'Switch to English',
         },
@@ -29,7 +28,7 @@ const translations = {
             service: 'บริการ',
             news: 'ข่าวสาร',
             contact: 'ติดต่อเรา',
-            toggleMenu: 'สลับเมนู',
+            toggleMenu: 'Header Menu',
             switchToThai: 'สลับเป็นภาษาไทย',
             switchToEnglish: 'สลับเป็นภาษาอังกฤษ',
         },
@@ -37,7 +36,6 @@ const translations = {
 };
 
 type TranslationKeys = typeof translations;
-// Export Type สำคัญ
 export type Locale = keyof TranslationKeys; 
 
 const menuItems = [
@@ -47,7 +45,7 @@ const menuItems = [
 export type HeaderKeys = typeof menuItems[number]; 
 
 
-// *** 2. Inline SVG Icons (โค้ดเต็มที่แก้ไขแล้ว) ***
+// *** 2. Inline SVG Icons ***
 
 const GlobeIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" className={className}>
@@ -73,7 +71,6 @@ interface HeaderProps {
     isMenuOpen: boolean;
     toggleMenu: () => void;
     locale: Locale; 
-    // ใช้ Type ของ TFunction ที่อ้างถึง HeaderKeys ที่เรา Export ไว้
     t: (key: `header.${HeaderKeys}`) => string; 
     toggleLocale: () => void;
 }
@@ -90,7 +87,7 @@ export default function Header({ isMenuOpen, toggleMenu, locale, t, toggleLocale
     const headerClass =
         'fixed top-0 left-0 w-full z-50 transition-colors duration-300 backdrop-blur-sm bg-black/60';
 
-    const toggleMenuLabel = isMounted ? t('header.toggleMenu') : 'Toggle menu'; 
+    const toggleMenuLabel = isMounted ? t('header.toggleMenu') : 'Header Menu'; 
     const langToggleLabel = isMounted 
         ? (locale === 'en' ? t('header.switchToThai') : t('header.switchToEnglish')) 
         : (locale === 'en' ? 'Switch to Thai' : 'Switch to English'); 
@@ -146,7 +143,8 @@ export default function Header({ isMenuOpen, toggleMenu, locale, t, toggleLocale
                         onClick={toggleMenu}
                         type="button"
                         className="text-white text-2xl p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 rounded relative z-50"
-                        aria-expanded={isMenuOpen ? "true" : "false"} 
+                        // *** แก้ไข ARIA attribute: ใช้ Boolean เป็น string ("true" | "false") เพื่อให้เป็นค่า ARIA ที่ถูกต้อง ***
+                        aria-expanded={isMenuOpen ? 'true' : 'false'}
                         aria-label={toggleMenuLabel}
                     >
                         {isMenuOpen 

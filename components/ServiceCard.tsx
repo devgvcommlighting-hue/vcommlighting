@@ -14,7 +14,7 @@ export default function ServiceCard({ icon: Icon, title, description, linkHref }
         <div className="flex flex-col items-center text-center p-6 sm:p-8 bg-white transition-shadow duration-300 hover:shadow-xl rounded-lg">
 
             {/* Icon Area */}
-            <div className="text-blue-600 mb-6">
+            <div className="text-green-600 mb-6"> 
                 <Icon className="w-16 h-16 sm:w-20 sm:h-20" aria-hidden="true" />
             </div>
 
@@ -31,9 +31,9 @@ export default function ServiceCard({ icon: Icon, title, description, linkHref }
             {/* Explore More Link/Button */}
             <Link
                 href={linkHref}
-                className="text-sm font-semibold uppercase tracking-wider text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-colors duration-200 mt-auto"
+                className="text-sm font-semibold uppercase tracking-wider text-green-600 border-b-2 border-transparent hover:border-green-600 transition-colors duration-200 mt-auto" 
             >
-                EXPLORE MORE
+                {'Explore More'}
             </Link>
         </div>
     );

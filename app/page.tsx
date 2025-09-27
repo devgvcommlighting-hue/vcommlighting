@@ -13,7 +13,7 @@ import type { Metadata } from 'next';
 export default function AboutPage() {
     return (
         // ลบ className="min-h-screen flex flex-col pt-20" ออก
-        <div className="py-12">
+        <div className="py-1">
             {/*
                 Header ถูกย้ายไปที่ layout.tsx แล้ว
                 ลบ <Header /> ออก
