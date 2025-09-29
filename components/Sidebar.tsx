@@ -3,37 +3,48 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-// Import ไอคอนทั้งหมดจาก lucide-react เพื่อความสอดคล้อง
+// Import ไอคอนทั้งหมดที่จำเป็นจาก lucide-react
 import { 
-    FileDigit, 
-    Gem, 
-    Crown, 
-    CalendarCheck, 
-    Book, 
-    Code, 
-    Settings, 
-    Database, 
-    Plug,
-    Info, 
-    HeartHandshake,
     X,
     Menu, 
-    Globe 
+    Globe,
+    Info, 
+    HeartHandshake,
+    Gem,
+    FileText // สำหรับ Case Collection
 } from 'lucide-react'; 
-import { FaGithub } from 'react-icons/fa'; 
-import { BiSearchAlt } from 'react-icons/bi'; 
+// Type Definitions ที่ถูก Import จาก Header.tsx (สมมติว่าคุณมีการนำเข้า HeaderKeys และ Locale มาจาก Header หรือใช้ Global Type)
+// ในตัวอย่างนี้ ผมจะประกาศ Type ภายในนี้อีกครั้งเพื่อให้โค้ดทำงานได้โดยไม่มี dependency
 
 // *************************************************************
-// Type Definitions (แก้ไขสำหรับ TS2345)
+// Type Definitions (แก้ไข: contact -> case)
 // *************************************************************
 type Locale = 'en' | 'th'; 
-type MainMenuItemKey = 'home' | 'about' | 'products' | 'service' | 'contact';
+type MainMenuItemKey = 'home' | 'about' | 'products' | 'service' | 'case'; // <--- แก้ไขตรงนี้
 type HeaderKeys = MainMenuItemKey | 'toggleMenu' | 'switchToThai' | 'switchToEnglish';
 type TFunction = (key: `header.${HeaderKeys}`) => string;
 
+// ฟังก์ชันสำหรับกำหนด Icon ตาม Key
+const getIcon = (key: MainMenuItemKey): React.ReactNode => {
+    switch (key) {
+        case 'home':
+            return <Menu size={20} />; 
+        case 'about':
+            return <Info size={20} />;
+        case 'products':
+            return <Gem size={20} />;
+        case 'service':
+            return <HeartHandshake size={20} />;
+        case 'case': 
+            return <FileText size={20} />; // ใช้ FileText สำหรับ Case Collection
+        default:
+            return <Menu size={20} />;
+    }
+}
+
 
 // *************************************************************
-// Component: MenuItem
+// Component: MenuItem (ประกาศ Component ที่ขาดไป)
 // *************************************************************
 interface MenuItemProps {
     icon: React.ReactNode;
@@ -43,11 +54,11 @@ interface MenuItemProps {
     onClick?: () => void; 
 }
 
+// นี่คือส่วนที่ขาดหายไปและทำให้เกิด error
 const MenuItem: React.FC<MenuItemProps> = ({ icon, text, href, isExternal = false, onClick }) => {
     
     const baseClasses = "flex items-center p-3 text-gray-700 hover:bg-gray-100 cursor-pointer transition-colors duration-150";
     
-    // สำหรับปุ่มที่มี onClick (เช่นปุ่มเปลี่ยนภาษา)
     if (onClick && !href) {
         return (
             <div className={baseClasses} onClick={onClick}>
@@ -81,6 +92,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ icon, text, href, isExternal = fals
 interface SidebarProps {
     isOpen: boolean;
     onClose: () => void;
+    // ใช้ MainMenuItemKey[] เพื่อให้มั่นใจว่ามีแค่ 5 เมนูหลัก
     menuItems: readonly MainMenuItemKey[]; 
     t: TFunction;
     locale: Locale;
@@ -88,16 +100,7 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, menuItems, t, locale, toggleLocale }) => {
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
-
-    const handleOpenPopup = () => {
-        setIsPopupOpen(true);
-    };
-
-    const handleClosePopup = () => {
-        setIsPopupOpen(false);
-    };
-
+    
     const handleLanguageToggle = () => {
         toggleLocale();
     };
@@ -114,15 +117,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, menuItems, t, locale
                 />
             )}
 
-            {/* *** แก้ไข: เปลี่ยนจาก left-0 เป็น top-0 และใช้ translate-y เพื่อเลื่อนจากบนลงล่าง *** */}
-            {/* *** กำหนดความสูงเป็น full เพื่อให้เต็มหน้าจอในแนวตั้ง *** */}
-            {/* *** แก้ไข: เพิ่ม bg-white/30, backdrop-blur-md, และ shadow-xl เพื่อทำพื้นหลังใสเบลอ *** */}
             <aside className={`fixed inset-x-0 top-0 transform ${isOpen ? 'translate-y-0' : '-translate-y-full'} transition-transform duration-300 ease-in-out md:hidden w-full h-full bg-white/30 backdrop-blur-md shadow-xl overflow-y-auto z-50`}>
                 
-                {/* Header (Mobile Only) - ปุ่มปิดถูกจัดชิดขวา */}
-                {/* *** แก้ไข: เปลี่ยนเป็น justify-end เพื่อให้ปุ่มปิดอยู่ขวา และนำ h2 ออก *** */}
+                {/* Header (Mobile Only) */}
                 <div className="flex justify-end items-center p-4 border-b bg-gray-10 h-20">
-                    
                     <button 
                         onClick={onClose}
                         type="button" 
@@ -133,15 +131,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose, menuItems, t, locale
                 </div>
                 
                 <nav>
-                    {/* *** 1. เมนูหลัก (จาก Header) *** */}
+                    {/* *** 1. เมนูหลัก *** */}
                     <div className="p-4 border-b">
                         <h2 className="text-sm text-gray-100 font-semibold uppercase tracking-wider">MAIN MENU</h2>
                     </div>
                     {menuItems.map((item) => (
-                        <MenuItem
+                        <MenuItem // <--- ตอนนี้เรียกใช้งานได้แล้ว
                             key={item}
                             href={`/${item === 'home' ? '' : item}`}
-                            icon={<Menu size={20} />} 
+                            icon={getIcon(item)} 
                             text={t(`header.${item}`)}
                             onClick={onClose} 
                         />

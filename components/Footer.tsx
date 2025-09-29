@@ -1,4 +1,4 @@
-// components/Footer.tsx
+// components/Footer.tsx (ส่วนที่แก้ไข)
 
 import React from 'react';
 import Link from 'next/link';
@@ -25,13 +25,13 @@ export default function Footer() {
                             <a href="#" aria-label="LinkedIn" className="text-gray-400 hover:text-green-500 transition-colors text-xl">
                                 <FaLinkedin />
                             </a>
-                            <a href="mailto:info@vcommlighting.com" aria-label="Email" className="text-gray-400 hover:text-green-500 transition-colors text-xl">
+                            <a href="mailto:contactvcomm@gmail.com" aria-label="Email" className="text-gray-400 hover:text-green-500 transition-colors text-xl">
                                 <FaEnvelope />
                             </a>
                         </div>
                     </div>
 
-                    {/* คอลัมน์ที่ 2: Quick Links */}
+                    {/* คอลัมน์ที่ 2: Quick Links (แก้ไข: contact -> case) */}
                     <div>
                         <h3 className="text-lg font-semibold mb-4 uppercase tracking-widest text-green-500"> 
                             Quick Links
@@ -41,7 +41,7 @@ export default function Footer() {
                             <li><Link href="/products" className="text-gray-400 hover:text-green-500 transition-colors">สินค้า</Link></li> 
                             <li><Link href="/service" className="text-gray-400 hover:text-green-500 transition-colors">บริการ</Link></li> 
                             <li><Link href="/news" className="text-gray-400 hover:text-green-500 transition-colors">ข่าวสาร</Link></li> 
-                            <li><Link href="/contact" className="text-gray-400 hover:text-green-500 transition-colors">ติดต่อเรา</Link></li> 
+                            <li><Link href="/case" className="text-gray-400 hover:text-green-500 transition-colors">ผลงาน (Case Collection)</Link></li> {/* <--- แก้ไขตรงนี้ */}
                         </ul>
                     </div>
 
@@ -57,7 +57,7 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* คอลัมน์ที่ 4: Contact Info */}
+                    {/* คอลัมน์ที่ 4: Contact Info (ปรับให้เป็นข้อมูลบริษัท) */}
                     <div>
                         <h3 className="text-lg font-semibold mb-4 uppercase tracking-widest text-green-500"> 
                             Contact
@@ -65,22 +65,24 @@ export default function Footer() {
                         <ul className="space-y-3 text-sm">
                             <li className="flex items-start">
                                 <FaMapMarkerAlt className="mt-1 mr-3 text-green-500 flex-shrink-0" /> 
-                                <span className="text-gray-400">123 ถนนวิคอมไลท์ติ้ง, กรุงเทพฯ, 10110</span>
+                                <span className="text-gray-400">516/132 Soi Ramkhamhang39 (Thepleela1), Wangtonglang, Bangkok THAILAND 10310</span>
                             </li>
                             <li className="flex items-center">
                                 <FaPhone className="mr-3 text-green-500" /> 
-                                <a href="tel:+6621234567" className="text-gray-400 hover:text-green-500 transition-colors">+66 (0) 2 123 4567</a> 
+                                <a href="tel:0613289536" className="text-gray-400 hover:text-green-500 transition-colors">061-3289536</a> 
                             </li>
                             <li className="flex items-center">
                                 <FaEnvelope className="mr-3 text-green-500" /> 
-                                <a href="mailto:info@vcommlighting.com" className="text-gray-400 hover:text-green-500 transition-colors">info@vcommlighting.com</a> 
+                                <a href="mailto:contactvcomm@gmail.com" className="text-gray-400 hover:text-green-500 transition-colors">contactvcomm@gmail.com</a> 
                             </li>
                         </ul>
                     </div>
                 </div>
 
                 {/* ส่วนล่าง: Copyright */}
-                {/* ... (omitting copyright text for brevity) */}
+                <div className="text-center pt-4 text-xs text-gray-500">
+                    &copy; {year} VCOMM DIGITAL (THAILAND) CO.,LTD. All rights reserved.
+                </div>
             </div>
         </footer>
     );

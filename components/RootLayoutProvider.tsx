@@ -1,32 +1,34 @@
-// components/RootLayoutProvider.tsx
+// components/RootLayoutProvider.tsx (ส่วนที่แก้ไข)
 
 'use client';
 
 import React, { useState } from 'react';
 // Import Header และ Sidebar
-import Header, { Locale, HeaderKeys } from './Header'; // ต้อง Import Locale และ HeaderKeys
+import Header, { Locale, HeaderKeys } from './Header'; 
 import Sidebar from './Sidebar';
 import Footer from './Footer';
 
-// *** 1. Translation Data (คัดลอกมาจาก Header.tsx) ***
+// *** 1. Translation Data (แก้ไข: contact -> case) ***
 const translations = {
     en: { 
         header: {
             home: 'Home', about: 'About Us', products: 'Products', service: 'Service', 
-            contact: 'Contact Us', toggleMenu: 'Toggle menu', 
+            case: 'Case Collection', toggleMenu: 'Toggle menu', // <--- แก้ไขตรงนี้
             switchToThai: 'Switch to Thai', switchToEnglish: 'Switch to English',
         },
     },
     th: {
         header: {
             home: 'หน้าแรก', about: 'เกี่ยวกับเรา', products: 'สินค้า', service: 'บริการ', 
-            contact: 'ติดต่อเรา', toggleMenu: 'สลับเมนู',
+            case: 'ผลงาน', toggleMenu: 'สลับเมนู', // <--- แก้ไขตรงนี้
             switchToThai: 'สลับเป็นภาษาไทย', switchToEnglish: 'สลับเป็นภาษาอังกฤษ',
         },
     },
 };
 
-// *** 2. useI18n Hook (แก้ไขให้มีการ return อย่างชัดเจน) ***
+// *** 2. useI18n Hook (ยังคงเดิม) ***
+// ... (useI18n code remains the same) ...
+
 const useI18n = () => {
     // ใช้ Locale Type จาก Header.tsx
     const [locale, setLocale] = useState<Locale>('en'); 
@@ -44,19 +46,20 @@ const useI18n = () => {
     return { locale, t, toggleLocale };
 };
 
-// *** 3. RootLayoutProvider Component ***
+
+// *** 3. RootLayoutProvider Component (แก้ไข: contact -> case) ***
 interface RootLayoutProviderProps {
     children: React.ReactNode;
-    fontClasses: string; // รับ String ของ Class Name เข้ามา
+    fontClasses: string; 
 }
 
-// items ที่ใช้ใน Sidebar
-const sidebarMenuItems = ['home', 'about', 'products', 'service', 'contact'] as const;
+// items ที่ใช้ใน Sidebar (แก้ไข: contact -> case)
+const sidebarMenuItems = ['home', 'about', 'products', 'service', 'case'] as const; // <--- แก้ไขตรงนี้
 
 
 export default function RootLayoutProvider({ children, fontClasses }: RootLayoutProviderProps) {
+// ... (Rest of the component remains the same) ...
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    // *** FIX: Destructuring จาก Hook ที่ถูกแก้ไขแล้ว ***
     const { locale, t, toggleLocale } = useI18n(); 
 
     const toggleMenu = () => {

@@ -1,11 +1,11 @@
-// components/Header.tsx
+// components/Header.tsx (ส่วนที่แก้ไข)
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// *** 1. Translation Data และ Type Definitions ***
+// *** 1. Translation Data และ Type Definitions (แก้ไข: contact -> case) ***
 const translations = {
     en: {
         header: {
@@ -13,7 +13,7 @@ const translations = {
             about: 'About Us',
             products: 'Products',
             service: 'Service',
-            contact: 'Contact Us',
+            case: 'Case Collection', // <--- แก้ไขตรงนี้
             toggleMenu: 'Header Menu', 
             switchToThai: 'Switch to Thai',
             switchToEnglish: 'Switch to English',
@@ -25,7 +25,7 @@ const translations = {
             about: 'เกี่ยวกับเรา',
             products: 'สินค้า',
             service: 'บริการ',
-            contact: 'ติดต่อเรา',
+            case: 'ผลงาน (Case Collection)', // <--- แก้ไขตรงนี้
             toggleMenu: 'Header Menu',
             switchToThai: 'สลับเป็นภาษาไทย',
             switchToEnglish: 'สลับเป็นภาษาอังกฤษ',
@@ -37,13 +37,14 @@ type TranslationKeys = typeof translations;
 export type Locale = keyof TranslationKeys; 
 
 const menuItems = [
-    'home', 'about', 'products', 'service', 'contact', 
+    'home', 'about', 'products', 'service', 'case', // <--- แก้ไขตรงนี้
     'toggleMenu', 'switchToThai', 'switchToEnglish'
 ] as const;
 export type HeaderKeys = typeof menuItems[number]; 
 
 
-// *** 2. Inline SVG Icons ***
+// *** 2. Inline SVG Icons (โค้ดส่วนนี้ยังคงเดิม) ***
+// ... (GlobeIcon, BarsIcon, TimesIcon code remains the same) ...
 
 const GlobeIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" className={className}>
@@ -62,7 +63,6 @@ const TimesIcon = ({ className }: { className?: string }) => (
         <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
     </svg>
 );
-
 
 // *** 3. Header Props ***
 interface HeaderProps {
@@ -109,8 +109,8 @@ export default function Header({ isMenuOpen, toggleMenu, locale, t, toggleLocale
 
                 {/* เมนูหลัก (Desktop) */}
                 <nav className="hidden md:flex items-center space-x-6">
-                    {/* แสดงลิงก์เมนู 6 รายการแรก */}
-                    {menuItems.slice(0, 6).map((item) => ( 
+                    {/* แสดงลิงก์เมนู 5 รายการแรก (home, about, products, service, case) */}
+                    {menuItems.slice(0, 5).map((item) => ( 
                         <Link
                             key={item}
                             href={`/${item === 'home' ? '' : item}`}
@@ -141,7 +141,6 @@ export default function Header({ isMenuOpen, toggleMenu, locale, t, toggleLocale
                         onClick={toggleMenu}
                         type="button"
                         className="text-white text-2xl p-2 focus:outline-none focus:ring-2 focus:ring-yellow-500 rounded relative z-50"
-                        // *** แก้ไข ARIA attribute: ใช้ Boolean เป็น string ("true" | "false") เพื่อให้เป็นค่า ARIA ที่ถูกต้อง ***
                         aria-expanded={isMenuOpen ? 'true' : 'false'}
                         aria-label={toggleMenuLabel}
                     >

@@ -1,3 +1,4 @@
+// hooks/use-i18n.ts
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
@@ -11,6 +12,7 @@ export type Locale = 'en' | 'th';
 interface Translations {
     header: { [key: string]: string };
     hero: { [key: string]: string };
+    // สามารถเพิ่ม section อื่นๆ ได้ที่นี่
 }
 
 const translations: Record<Locale, Translations> = {
@@ -20,23 +22,38 @@ const translations: Record<Locale, Translations> = {
 
 // Hook สำหรับการจัดการภาษา
 export const useI18n = () => {
-    const [locale, setLocale] = useState<Locale>('th'); // กำหนดภาษาเริ่มต้นเป็น 'th'
+    // กำหนดภาษาเริ่มต้นเป็น 'th' และโหลดจาก localStorage หากมี
+    const [locale, setLocale] = useState<Locale>(() => {
+        if (typeof window !== 'undefined') {
+            return (localStorage.getItem('locale') as Locale) || 'th';
+        }
+        return 'th';
+    });
+
+    // เก็บ locale ใน localStorage เมื่อมีการเปลี่ยนแปลง
+    useEffect(() => {
+        localStorage.setItem('locale', locale);
+    }, [locale]);
+
 
     // ฟังก์ชันสลับภาษา
     const toggleLocale = useCallback(() => {
         setLocale(prevLocale => (prevLocale === 'en' ? 'th' : 'en'));
     }, []);
 
-    // ฟังก์ชันสำหรับดึงข้อความแปล
+    /**
+     * ฟังก์ชันสำหรับดึงข้อความแปล
+     * @param keyPath เช่น 'header.about' หรือ 'hero.tagline_line1'
+     */
     const t = useCallback(
         (keyPath: string): string => {
             const [mainKey, subKey] = keyPath.split('.');
             const currentTranslations = translations[locale];
 
-            if (mainKey && subKey) {
-                return (currentTranslations as any)[mainKey]?.[subKey] || `Missing translation for ${keyPath}`;
+            if (mainKey && subKey && currentTranslations[mainKey as keyof Translations] && (currentTranslations[mainKey as keyof Translations] as any)[subKey]) {
+                return (currentTranslations[mainKey as keyof Translations] as any)[subKey];
             }
-            return `Missing translation for ${keyPath}`;
+            return `[Missing translation: ${keyPath} in ${locale}]`;
         },
         [locale]
     );
