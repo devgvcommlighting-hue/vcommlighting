@@ -27,7 +27,7 @@ import { BiSearchAlt } from 'react-icons/bi';
 // Type Definitions (แก้ไขสำหรับ TS2345)
 // *************************************************************
 type Locale = 'en' | 'th'; 
-type MainMenuItemKey = 'home' | 'about' | 'products' | 'service' | 'news' | 'contact';
+type MainMenuItemKey = 'home' | 'about' | 'products' | 'service' | 'contact';
 type HeaderKeys = MainMenuItemKey | 'toggleMenu' | 'switchToThai' | 'switchToEnglish';
 type TFunction = (key: `header.${HeaderKeys}`) => string;
 

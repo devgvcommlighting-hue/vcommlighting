@@ -12,14 +12,14 @@ const translations = {
     en: { 
         header: {
             home: 'Home', about: 'About Us', products: 'Products', service: 'Service', 
-            news: 'News', contact: 'Contact Us', toggleMenu: 'Toggle menu', 
+            contact: 'Contact Us', toggleMenu: 'Toggle menu', 
             switchToThai: 'Switch to Thai', switchToEnglish: 'Switch to English',
         },
     },
     th: {
         header: {
             home: 'หน้าแรก', about: 'เกี่ยวกับเรา', products: 'สินค้า', service: 'บริการ', 
-            news: 'ข่าวสาร', contact: 'ติดต่อเรา', toggleMenu: 'สลับเมนู',
+            contact: 'ติดต่อเรา', toggleMenu: 'สลับเมนู',
             switchToThai: 'สลับเป็นภาษาไทย', switchToEnglish: 'สลับเป็นภาษาอังกฤษ',
         },
     },
@@ -50,7 +50,7 @@ interface RootLayoutProviderProps {
 }
 
 // items ที่ใช้ใน Sidebar
-const sidebarMenuItems = ['home', 'about', 'products', 'service', 'news', 'contact'] as const;
+const sidebarMenuItems = ['home', 'about', 'products', 'service', 'contact'] as const;
 
 
 export default function RootLayoutProvider({ children, fontClasses }: RootLayoutProviderProps) {

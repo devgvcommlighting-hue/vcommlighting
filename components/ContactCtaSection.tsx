@@ -44,7 +44,7 @@ export default function ContactCtaSection() {
 
             {/* Background Image */}
             <Image
-                src="/hero-cta-bg.jpg" // **ต้องสร้างไฟล์นี้ใน public/hero-cta-bg.jpg**
+                src="/hero-cta-bg.png" // **ต้องสร้างไฟล์นี้ใน public/hero-cta-bg.jpg**
                 alt="Let's Discuss Your Project"
                 fill
                 style={{ objectFit: 'cover' }}

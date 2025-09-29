@@ -13,7 +13,6 @@ const translations = {
             about: 'About Us',
             products: 'Products',
             service: 'Service',
-            news: 'News',
             contact: 'Contact Us',
             toggleMenu: 'Header Menu', 
             switchToThai: 'Switch to Thai',
@@ -26,7 +25,6 @@ const translations = {
             about: 'เกี่ยวกับเรา',
             products: 'สินค้า',
             service: 'บริการ',
-            news: 'ข่าวสาร',
             contact: 'ติดต่อเรา',
             toggleMenu: 'Header Menu',
             switchToThai: 'สลับเป็นภาษาไทย',
@@ -39,7 +37,7 @@ type TranslationKeys = typeof translations;
 export type Locale = keyof TranslationKeys; 
 
 const menuItems = [
-    'home', 'about', 'products', 'service', 'news', 'contact', 
+    'home', 'about', 'products', 'service', 'contact', 
     'toggleMenu', 'switchToThai', 'switchToEnglish'
 ] as const;
 export type HeaderKeys = typeof menuItems[number]; 
@@ -100,7 +98,7 @@ export default function Header({ isMenuOpen, toggleMenu, locale, t, toggleLocale
                 {/* โลโก้ */}
                 <Link href="/" onClick={() => isMenuOpen && toggleMenu()}>
                     <Image
-                        src="/vcommlighting-logo-placeholder.svg" 
+                        src="/logo-web-removebg-preview.png" 
                         alt="โลโก้ Vcommlighting"
                         width={150} 
                         height={40}

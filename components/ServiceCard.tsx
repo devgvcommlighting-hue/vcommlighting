@@ -16,7 +16,8 @@ export default function ServiceCard({ icon: Icon, title, description, linkHref }
             {/* Icon Area */}
             <div className="text-green-600 mb-6"> 
                 <Icon className="w-16 h-16 sm:w-20 sm:h-20" aria-hidden="true" />
-            </div>
+                
+            </div> 
 
             {/* Title */}
             <h3 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-800">

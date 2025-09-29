@@ -4,12 +4,11 @@
         "about": "เกี่ยวกับเรา",
         "products": "สินค้า",
         "service": "บริการ",
-        "news": "ข่าวสาร",
         "contact": "ติดต่อเรา"
     },
     "hero": {
-        "tagline_line1": "Energy Ecosystem",
-        "tagline_line2": "Energy saving",
+        "tagline_line1": "Ecological for",
+        "tagline_line2": "the Future",
         "button": "LED lighting"
     }
 }

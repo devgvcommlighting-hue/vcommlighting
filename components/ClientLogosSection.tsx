@@ -3,12 +3,12 @@ import Image from 'next/image';
 
 // ข้อมูลโลโก้ลูกค้า (แทนที่ด้วยชื่อไฟล์โลโก้จริง)
 const clientLogos = [
-    { name: 'Danone', src: '/logos/ClientLogos1.svg' },
-    { name: 'Foremost', src: '/logos/ClientLogos2.svg' },
-    { name: 'Kewpie', src: '/logos/ClientLogos3.svg' },
-    { name: 'Kornthai', src: '/logos/ClientLogos4.svg' },
-    { name: 'Swensens', src: '/logos/ClientLogos5.svg' },
-    { name: 'Synova', src: '/logos/ClientLogos6.svg' },
+    { name: 'ClientLogos1', src: '/logos/ClientLogos1.png' },
+    { name: 'ClientLogos2', src: '/logos/ClientLogos2.png' },
+    { name: 'ClientLogos3', src: '/logos/ClientLogos3.png' },
+    { name: 'ClientLogos4', src: '/logos/ClientLogos4.png' },
+    { name: 'ClientLogos5', src: '/logos/ClientLogos5.png' },
+    { name: 'ClientLogos6', src: '/logos/ClientLogos6.png' },
 ];
 
 // โลโก้ซ้ำ 2 ชุด เพื่อให้เกิด Infinite Loop
@@ -26,7 +26,7 @@ export default function ClientLogosSection() {
                     {fullLogoSet.map((logo, index) => (
                         <div
                             key={`${logo.name}-${index}`}
-                            className="flex justify-center items-center flex-shrink-0 w-[150px] sm:w-[200px] h-10 md:h-12 opacity-70 transition-opacity duration-300 mx-4 md:mx-8"
+                            className="flex justify-center items-center flex-shrink-0 w-[150px] sm:w-[200px] h-10 md:h-12 opacity-100 transition-opacity duration-400 mx-4 md:mx-8"
                         // w-[150px] คือการกำหนดความกว้างของแต่ละโลโก้สำหรับใช้คำนวณใน CSS slide animation
                         >
                             <Image

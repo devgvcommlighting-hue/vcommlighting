@@ -4,12 +4,11 @@
         "about": "ABOUT US",
         "products": "PRODUCTS",
         "service": "SERVICE",
-        "news": "NEWS",
         "contact": "CONTACT US"
     },
     "hero": {
-        "tagline_line1": "HIGH QUALITY",
-        "tagline_line2": "DAIRY INGREDIENTS",
+        "tagline_line1": "Ecological for the Future",
+        "tagline_line2": "Ecological for the Future",
         "button": "Dairy Products"
     }
 }

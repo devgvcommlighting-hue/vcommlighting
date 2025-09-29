@@ -9,12 +9,12 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 const heroSlides = [
     {
         id: 1,
-        imageUrl: '/hero-1.jpg', // ต้องเตรียมรูปภาพในโฟลเดอร์ public
+        imageUrl: '/hero-1.png', // ต้องเตรียมรูปภาพในโฟลเดอร์ public
         alt: 'Important partner of State Grid Energy Ecosystem',
     },
     {
         id: 2,
-        imageUrl: '/hero-2.jpg',
+        imageUrl: '/hero-2.png',
         alt: 'Energy saving • Low carbon • Digital • Smart',
     },
 ];
