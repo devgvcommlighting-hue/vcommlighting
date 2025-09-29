@@ -1,5 +1,6 @@
 // app/case/page.tsx
 import type { Metadata } from 'next';
+import CaseGrid from '@/components/CaseGrid'; // นำเข้า CaseGrid
 
 export const metadata: Metadata = {
     title: 'ผลงาน (Case Collection) - VCOMM Lighting',
@@ -8,12 +9,21 @@ export const metadata: Metadata = {
 
 export default function CasePage() {
     return (
-        <div className="min-h-[70vh] flex flex-col items-center justify-center p-8 bg-gray-50">
-            <h1 className="text-4xl font-bold text-blue-700 mb-4">หน้าผลงาน (Case Collection)</h1>
-            <p className="text-lg text-gray-600">กำลังอยู่ในระหว่างการรวบรวมและแสดงผลงานอ้างอิงของโครงการเร็วๆ นี้</p>
-            <div className="mt-8 p-4 bg-indigo-100 border-l-4 border-indigo-500 text-indigo-700">
-                <p>✨ ส่วนนี้จะนำเสนอความน่าเชื่อถือด้วยผลลัพธ์การลดพลังงาน 20%-80%</p>
+        <div className="pt-20 bg-gray-50"> {/* เพิ่ม pt-20 เพื่อให้เนื้อหาไม่ถูก Header บัง */}
+            
+            {/* ส่วนหัวของหน้า (Case Collection) */}
+            <div className="text-center py-10 px-4">
+                <h1 className="text-4xl font-extrabold text-blue-800 mb-4">
+                    Case Collection & Project Success
+                </h1>
+                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                    เราสร้างความเชื่อมั่นด้วยผลลัพธ์: การลดการใช้พลังงาน 20%-80% ผ่านโซลูชันแสงสว่างและอุปกรณ์คุณภาพสูงของเรา
+                </p>
             </div>
+            
+            {/* ส่วนแสดง Case Grid */}
+            <CaseGrid />
+            
         </div>
     );
 }
