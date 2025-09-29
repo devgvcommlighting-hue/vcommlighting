@@ -1,3 +1,5 @@
+// components/Footer.tsx
+
 import React from 'react';
 import Link from 'next/link';
 import { FaFacebook, FaLinkedin, FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';

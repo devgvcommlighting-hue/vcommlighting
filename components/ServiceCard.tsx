@@ -1,3 +1,4 @@
+// components/ServiceCard.tsx
 import React from 'react';
 import { IconType } from 'react-icons';
 import Link from 'next/link';

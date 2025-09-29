@@ -1,3 +1,5 @@
+// components/ProductsSection.tsx
+
 import React from 'react';
 import ProductCard from './ProductCard';
 
