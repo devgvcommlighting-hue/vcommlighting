@@ -60,7 +60,7 @@ export default function ContactCtaSection() {
 
                 {/* Main Text */}
                 <h2 className="text-3xl md:text-5xl font-bold text-white tracking-wide mb-12 drop-shadow-lg max-w-4xl">
-                    LET&apos;S DISCUSS YOUR PROJECT WITH THE BEST SOLUTION
+                    LET'S DISCUSS YOUR PROJECT WITH THE BEST SOLUTION
                 </h2>
 
                 {/* Contact Icons Grid */}
@@ -74,8 +74,9 @@ export default function ContactCtaSection() {
                             className={`flex flex-col items-center justify-center p-4 w-28 h-28 sm:w-32 sm:h-32 rounded-full shadow-xl transition-all duration-300 transform scale-100 ${item.color} ${item.hover} hover:scale-105`}
                         >
                             <item.icon className="w-8 h-8 text-white mb-1" aria-hidden="true" />
+                            {/* *** แก้ไขตรงนี้: ให้แสดง item.label ของทุกปุ่ม *** */}
                             <span className="text-white text-xs font-bold uppercase mt-1">
-                                {item.label === 'LINE' ? 'LINE' : ''}
+                                {item.label} 
                             </span>
                         </Link>
                     ))}
