@@ -6,25 +6,25 @@ import ProductCard from './ProductCard';
 // ข้อมูลสินค้า (อ้างอิงจากภาพตัวอย่าง)
 const productsData = [
     {
-        imageUrl: '/products/dairy-powder.png', // ต้องเตรียมรูปภาพนี้
-        title: 'DAIRY POWDER',
+        imageUrl: '/images/led-high-bay-gk20-70.png', // ต้องเตรียมรูปภาพนี้
+        title: 'LED High Bay Light',
         description:
-            'ผลิตภัณฑ์ที่ผ่านกระบวนการผลิตที่ได้รับการรับรองมาตรฐานในระดับสากล',
-        link: '/products/dairy-powder',
+            'โคมไฟไฮเบย์ LED สำหรับโรงงานและคลังสินค้าขนาดเล็กถึงกลาง',
+        link: '/products',
     },
     {
-        imageUrl: '/products/cocoa-powder.png', // ต้องเตรียมรูปภาพนี้
-        title: 'COCOA POWDER',
+        imageUrl: '/images/led-street-light-ld.png', // ต้องเตรียมรูปภาพนี้
+        title: 'LED Street Light',
         description:
-            'ผลิตภัณฑ์โกโก้ไขมันต่ำ ช่วยเพิ่มคุณค่าและเอกลักษณ์ให้กับทุกเมนู',
-        link: '/products/cocoa-powder',
+            'ไฟถนน LED ที่ออกแบบมาเพื่อทนทานต่อสภาพแวดล้อมภายนอกอาคาร',
+        link: '/products',
     },
     {
-        imageUrl: '/products/dairy-fats.png', // ต้องเตรียมรูปภาพนี้
-        title: 'DAIRY FATS',
+        imageUrl: '/images/led-t8-tube-lrg.png', // ต้องเตรียมรูปภาพนี้
+        title: 'LED T8 Tube Light',
         description:
-            'ผลิตภัณฑ์ประเภทไขมันนม เนย ชีส เพื่อเพิ่มอรรถรสให้แก่เมนู',
-        link: '/products/dairy-fats',
+            'หลอดไฟ LED T8 ทางเลือกที่ประหยัดและเป็นมิตรต่อสิ่งแวดล้อม',
+        link: '/products',
     },
 ];
 

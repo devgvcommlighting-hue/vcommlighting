@@ -22,7 +22,7 @@ export default function ProductCard({ imageUrl, title, description, linkHref }: 
                     width={250} // ขนาดที่ใหญ่กว่า Display Size เล็กน้อย
                     height={250}
                     style={{ objectFit: 'contain' }}
-                    className="rounded-full" // หากต้องการให้ภาพดูเป็นวงกลม
+                    // className="rounded-full" // หากต้องการให้ภาพดูเป็นวงกลม
                 />
             </div>
 
