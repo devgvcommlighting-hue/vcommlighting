@@ -14,32 +14,35 @@ export default function ProductCard({ imageUrl, title, description, linkHref }: 
     return (
         <div className="flex flex-col items-center text-center p-4">
 
-            {/* Product Image (ใช้ Next/Image) */}
-            <div className="w-full max-w-[200px] h-[200px] flex items-center justify-center mb-6">
-                <Image
-                    src={imageUrl}
-                    alt={title}
-                    width={250} // ขนาดที่ใหญ่กว่า Display Size เล็กน้อย
-                    height={250}
-                    style={{ objectFit: 'contain' }}
-                    // className="rounded-full" // หากต้องการให้ภาพดูเป็นวงกลม
-                />
-            </div>
+            {/* Product Image และ Title (ห่อด้วย Link) */}
+            <Link href={linkHref} className="block w-full group cursor-pointer">
+                {/* Product Image (ใช้ Next/Image) */}
+                <div className="w-full max-w-[200px] h-[200px] flex items-center justify-center mb-6 mx-auto transition-transform duration-300 group-hover:scale-105">
+                    <Image
+                        src={imageUrl}
+                        alt={title}
+                        width={250} // ขนาดที่ใหญ่กว่า Display Size เล็กน้อย
+                        height={250}
+                        style={{ objectFit: 'contain' }}
+                        className="rounded-full shadow-lg" // เพิ่มเงาเพื่อให้ดูโดดเด่น
+                    />
+                </div>
 
-            {/* Title */}
-            <h3 className="text-xl md:text-2xl font-light uppercase tracking-widest text-gray-800 mb-4 border-b border-gray-300 pb-2">
-                {title}
-            </h3>
+                {/* Title */}
+                <h3 className="text-xl md:text-2xl font-light uppercase tracking-widest text-gray-800 mb-4 border-b border-gray-300 pb-2 transition-colors duration-300 group-hover:text-green-600">
+                    {title}
+                </h3>
+            </Link> {/* ปิด Link ตรงนี้ */}
 
             {/* Description */}
             <p className="text-sm text-gray-600 mb-8 min-h-[80px]">
                 {description}
             </p>
 
-            {/* Read More Button */}
+            {/* Read More Button (ยังคงเดิมเพื่อเป็นปุ่มแยก) */}
             <Link
                 href={linkHref}
-                className="inline-block border border-gray-400 text-gray-700 font-semibold py-3 px-6 transition-colors duration-300 hover:bg-gray-100 uppercase text-xs tracking-wider"
+                className="inline-block border border-gray-400 text-gray-700 font-semibold py-3 px-6 transition-colors duration-300 hover:bg-gray-700 hover:text-white uppercase text-xs tracking-wider" // ปรับสี hover ให้โดดเด่นขึ้น
             >
                 READ MORE
             </Link>

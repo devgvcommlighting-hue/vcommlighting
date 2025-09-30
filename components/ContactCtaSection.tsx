@@ -19,21 +19,21 @@ const contactLinks = [
     {
         icon: FaMapMarkerAlt,
         label: 'LOCATION',
-        href: '/contact',
+        href: 'https://maps.app.goo.gl/BrNrLLgET7yrbT6o9',
         color: 'bg-red-500',
         hover: 'hover:bg-red-600'
     },
     {
         icon: FaPhone,
         label: 'CALL',
-        href: 'tel:+6621234567',
+        href: 'tel:+66613289536',
         color: 'bg-blue-500',
         hover: 'hover:bg-blue-600'
     },
     {
         icon: FaEnvelope,
         label: 'EMAIL',
-        href: 'mailto:info@vcommlighting.com',
+        href: 'mailto:contactvcomm@gmail.com',
         color: 'bg-yellow-500',
         hover: 'hover:bg-yellow-600'
     },

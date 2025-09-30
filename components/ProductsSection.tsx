@@ -6,25 +6,25 @@ import ProductCard from './ProductCard';
 // ข้อมูลสินค้า (อ้างอิงจากภาพตัวอย่าง)
 const productsData = [
     {
-        imageUrl: '/images/led-high-bay-gk20-70.png', // ต้องเตรียมรูปภาพนี้
+        imageUrl: '/images/ex-products400.png', // ต้องเตรียมรูปภาพนี้
         title: 'LED High Bay Light',
         description:
             'โคมไฟไฮเบย์ LED สำหรับโรงงานและคลังสินค้าขนาดเล็กถึงกลาง',
-        link: '/products',
+        link: '/products/high-bay', // แนะนำให้ใช้ลิงก์เฉพาะเจาะจงมากขึ้น
     },
     {
-        imageUrl: '/images/led-street-light-ld.png', // ต้องเตรียมรูปภาพนี้
+        imageUrl: '/images/ex-products400.png', // ต้องเตรียมรูปภาพนี้
         title: 'LED Street Light',
         description:
             'ไฟถนน LED ที่ออกแบบมาเพื่อทนทานต่อสภาพแวดล้อมภายนอกอาคาร',
-        link: '/products',
+        link: '/products/street-light', // แนะนำให้ใช้ลิงก์เฉพาะเจาะจงมากขึ้น
     },
     {
-        imageUrl: '/images/led-t8-tube-lrg.png', // ต้องเตรียมรูปภาพนี้
+        imageUrl: '/images/ex-products400.png', // ต้องเตรียมรูปภาพนี้
         title: 'LED T8 Tube Light',
         description:
             'หลอดไฟ LED T8 ทางเลือกที่ประหยัดและเป็นมิตรต่อสิ่งแวดล้อม',
-        link: '/products',
+        link: '/products/t8-tube', // แนะนำให้ใช้ลิงก์เฉพาะเจาะจงมากขึ้น
     },
 ];
 
