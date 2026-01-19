@@ -11,8 +11,9 @@ import ProductDetail from '@/components/ProductDetail';
 export async function generateMetadata({
     params
 }: {
-    params: { slug: string }
+    params: Promise<{ slug: string }>
 }): Promise<Metadata> {
+    const { slug } = await params;
 
     // แปลง slug เป็นชื่อที่อ่านได้ (เช่น 'high-bay-gk-series-20-70' -> 'LED High Bay Light (20W - 70W)')
     const titleMap: Record<string, string> = {
@@ -22,7 +23,7 @@ export async function generateMetadata({
         'high-bay-gk-series-75-240': 'LED High Bay Light (75W - 240W)',
     };
 
-    const productTitle = titleMap[params.slug] || 'รายละเอียดผลิตภัณฑ์';
+    const productTitle = titleMap[slug] || 'รายละเอียดผลิตภัณฑ์';
 
     return {
         title: `${productTitle} | สินค้า Vcommlighting`,
@@ -36,12 +37,12 @@ export async function generateMetadata({
 // 2. Component Page หลัก
 // *************************************************************
 
-export default function ProductDetailPage({
+export default async function ProductDetailPage({
     params
 }: {
-    params: { slug: string }
+    params: Promise<{ slug: string }>
 }) {
-    const { slug } = params;
+    const { slug } = await params;
 
     return (
         <div className="min-h-screen bg-gray-50">

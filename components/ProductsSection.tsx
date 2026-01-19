@@ -26,6 +26,13 @@ const productsData = [
             'หลอดไฟ LED T8 ทางเลือกที่ประหยัดและเป็นมิตรต่อสิ่งแวดล้อม',
         link: '/products/t8-tube', // แนะนำให้ใช้ลิงก์เฉพาะเจาะจงมากขึ้น
     },
+    {
+        imageUrl: '/images/ex-products400.png', // ต้องเตรียมรูปภาพนี้
+        title: 'LED High Bay Light',
+        description:
+            'หลอดไฟ LED T8 GK Series 75W 240W ทางเลือกที่ประหยัดและเป็นมิตรต่อสิ่งแวดล้อม',
+        link: '/products/high-bay-gk-series-75-240', // แนะนำให้ใช้ลิงก์เฉพาะเจาะจงมากขึ้น
+    },
 ];
 
 export default function ProductsSection() {
@@ -44,7 +51,7 @@ export default function ProductsSection() {
                 </div>
 
                 {/* Products Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-12">
                     {productsData.map((product, index) => (
                         <ProductCard
                             key={index}
