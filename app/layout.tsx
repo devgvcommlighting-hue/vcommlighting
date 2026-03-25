@@ -38,7 +38,7 @@ export default function RootLayout({
             <body className="antialiased">
                 <ThemeProvider
                     attribute="class"
-                    defaultTheme="light" // Default to light
+                    defaultTheme="dark" // Default to dark
                     enableSystem={false} // Manual toggle only
                     disableTransitionOnChange
                 >
