@@ -26,7 +26,7 @@ const HighBayLightDetail: React.FC<ProductData> = ({ title, series, description,
     <div className="bg-white p-6 md:p-10 rounded-xl shadow-lg">
         <h1 className="text-4xl font-extrabold text-gray-900 mb-2">{title}</h1>
         <p className="text-xl text-teal-600 font-semibold mb-6">{series}</p>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* คอลัมน์ซ้าย: รูปภาพและเอกสาร */}
             <div className="md:col-span-1">
@@ -34,9 +34,9 @@ const HighBayLightDetail: React.FC<ProductData> = ({ title, series, description,
                     <img src={imageSrc} alt={title} className="object-contain w-full h-full p-4" />
                 </div>
                 {documentUrl && (
-                    <a 
-                        href={documentUrl} 
-                        target="_blank" 
+                    <a
+                        href={documentUrl}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center justify-center bg-gray-800 text-white p-3 rounded-lg hover:bg-emerald-600 transition-colors"
                     >
@@ -45,7 +45,7 @@ const HighBayLightDetail: React.FC<ProductData> = ({ title, series, description,
                     </a>
                 )}
             </div>
-            
+
             {/* คอลัมน์ขวา: รายละเอียดและคุณสมบัติ */}
             <div className="md:col-span-2">
                 <h2 className="text-2xl font-bold text-gray-800 border-b pb-2 mb-4">ภาพรวมผลิตภัณฑ์</h2>
@@ -88,12 +88,12 @@ const PRODUCT_MAP: Record<string, ProductData> = {
     // High Bay 20-70W
     'high-bay-gk-series-20-70': {
         title: "LED High Bay Light",
-        series: "GK-Series (20W - 70W)",
+        series: "GK-Series (40W - 200W)",
         description: "โคมไฟไฮเบย์ LED สำหรับโรงงานและคลังสินค้าขนาดเล็กถึงกลาง โดดเด่นด้วยการประหยัดพลังงานสูงและอายุการใช้งานยาวนาน",
-        features: ["ประสิทธิภาพสูงถึง 150 lm/W", "กันน้ำ/ฝุ่น IP65", "อายุการใช้งาน 50,000 ชั่วโมง", "รับประกัน 5 ปี"],
+        features: ["ประสิทธิภาพสูงถึง 200 lm/W", "กันน้ำ/ฝุ่น IP65", "อายุการใช้งาน 100,000 ชั่วโมง", "รับประกัน 8 ปี"],
         specs: [
-            { label: "กำลังไฟ", value: "20W - 70W" },
-            { label: "อุณหภูมิสี", value: "3000K / 5000K / 6500K" },
+            { label: "กำลังไฟ", value: "40W - 200W" },
+            { label: "อุณหภูมิสี", value: "4000-6000 ±500K" },
             { label: "วัสดุ", value: "Aluminum Alloy" },
             { label: "การรับรอง", value: "มอก." }
         ],
@@ -107,9 +107,9 @@ const PRODUCT_MAP: Record<string, ProductData> = {
         description: "ไฟถนน LED ที่ออกแบบมาเพื่อทนทานต่อสภาพแวดล้อมภายนอกอาคาร ให้ความสว่างสม่ำเสมอและลดค่าใช้จ่ายด้านพลังงานขององค์กร",
         features: ["ทนทานต่ออุณหภูมิสูง", "การกระจายแสงแบบ Type II/III", "ป้องกันฟ้าผ่า (Surge Protection)", "บำรุงรักษาง่าย"],
         specs: [
-            { label: "กำลังไฟ", value: "60W - 200W" },
-            { label: "กันน้ำ/ฝุ่น", value: "IP66" },
-            { label: "แรงดันไฟฟ้า", value: "AC 85-265V" },
+            { label: "กำลังไฟ", value: "40W - 200W" },
+            { label: "กันน้ำ/ฝุ่น", value: "IP65" },
+            { label: "แรงดันไฟฟ้า", value: "220-240V" },
             { label: "มาตรฐาน", value: "CE, RoHS" }
         ],
         imageSrc: "/images/led-street-light-ld.png",
@@ -120,9 +120,9 @@ const PRODUCT_MAP: Record<string, ProductData> = {
         title: "LED T8 Tube Light",
         series: "LRG-Series",
         description: "หลอดไฟ LED T8 ทางเลือกที่ประหยัดและเป็นมิตรต่อสิ่งแวดล้อม แทนหลอดฟลูออเรสเซนต์เดิม ติดตั้งง่ายและให้แสงสว่างสบายตา",
-        features: ["ประหยัดไฟกว่า 60%", "ไม่มี UV และ Mercury", "ใช้งานร่วมกับบัลลาสต์อิเล็กทรอนิกส์ได้", "แสงไม่กระพริบ"],
+        features: ["ประหยัดไฟกว่า 50%", "ไม่มี UV และ Mercury", "รับประกัน 8 ปี", "แสงไม่กระพริบ"],
         specs: [
-            { label: "กำลังไฟ", value: "9W / 18W" },
+            { label: "กำลังไฟ", value: "8W / 10W" },
             { label: "ความยาว", value: "60cm / 120cm" },
             { label: "ขั้วหลอด", value: "G13" },
             { label: "มุมลำแสง", value: "180 องศา" }
@@ -144,6 +144,21 @@ const PRODUCT_MAP: Record<string, ProductData> = {
         ],
         imageSrc: "/images/led-high-bay-gk75-240.png",
         documentUrl: "/docs/datasheet-gk75-240.pdf"
+    },
+    // Flood Light
+    'flood-light-gt-series': {
+        title: "LED Flood Light",
+        series: "GT-Series",
+        description: "โคมไฟสปอร์ตไลท์ LED ประสิทธิภาพสูง สำหรับส่องสว่างพื้นที่ภายนอกอาคาร ลานจอดรถ หรือสนามกีฬา ให้ความสว่างสูงและทนทานเป็นพิเศษ",
+        features: ["IP65 กันน้ำและฝุ่น", "อายุการใช้งาน 100,000 ชั่วโมง", "ตัวโคมทำจากอลูมิเนียมฉีดขึ้นรูประบายความร้อนได้ดี", "การกระจายแสงสม่ำเสมอ"],
+        specs: [
+            { label: "กำลังไฟ", value: "40W - 200W" },
+            { label: "กันน้ำ/ฝุ่น", value: "IP65" },
+            { label: "อุณหภูมิสี", value: "3000-6500K" },
+            { label: "แรงดันไฟฟ้า", value: "220-240V" }
+        ],
+        imageSrc: "/images/led-flood-light-gt.png",
+        documentUrl: "/docs/datasheet-gt-series.pdf"
     },
 };
 
@@ -173,7 +188,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ slug }) => {
                     ผลิตภัณฑ์ทั้งหมด
                 </Link>
             </div>
-            
+
             <HighBayLightDetail {...product} />
 
             {/* ส่วนแนะนำผลิตภัณฑ์ที่เกี่ยวข้อง */}
