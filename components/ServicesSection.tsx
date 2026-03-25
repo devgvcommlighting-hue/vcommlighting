@@ -2,6 +2,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 // Import ไอคอนที่ใกล้เคียงจาก react-icons/fa
 import { FaFlask, FaGlobe, FaWarehouse, FaTruckLoading } from 'react-icons/fa';
 import { IconType } from 'react-icons';
@@ -65,16 +66,33 @@ export default function InfographicSection() {
         // bg-gray-900 หรือ bg-blue-900 สำหรับสีพื้นหลังเข้ม
         // หากต้องการภาพพื้นหลังจริง ๆ ต้องตั้งค่าภาพนั้นใน CSS ภายนอก 
         // หรือใช้ Tailwind Plugin สำหรับการกำหนด background-image
-        <section className="py-16 md:py-24 bg-gray-50">
+        <section className="py-16 md:py-24 bg-gray-50 dark:bg-transparent">
             <div className="container mx-auto px-4 md:px-8">
 
                 {/* Header Section (ถ้ามี) */}
-                <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">
+                <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800 dark:text-white">
                     Important partner of State Grid Energy Ecosystem
                 </h2>
-                <p className="text-center text-lg text-gray-600 mb-12">
+                <p className="text-center text-lg text-gray-600 dark:text-gray-300 mb-12">
                     Energy saving • Low carbon • Digital • Smart
                 </p>
+
+
+                {/* 3 columns สำหรับรูปภาพ 1, 2, 3 */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                    {[1, 2, 3].map((num) => (
+                        <div key={num} className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 group">
+                            <Image
+                                src={`/images/${num}.jpg`}
+                                alt={`Service Image ${num}`}
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </div>
+                    ))}
+                </div>
+
 
                 {/* Services Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">

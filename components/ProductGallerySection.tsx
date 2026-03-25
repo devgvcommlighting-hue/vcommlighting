@@ -21,15 +21,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ title, series, imageSrc, link
         <Link
             href={linkHref}
             passHref
-            className="block bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:shadow-xl hover:-translate-y-1 group"
+            className="block bg-white/5 backdrop-blur-md border border-neon-blue/30 rounded-lg shadow-[0_0_10px_rgba(0,243,255,0.1)] overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,243,255,0.4)] hover:-translate-y-1 group"
         >
             {/* Image Container */}
-            <div className="relative w-full h-48 bg-gray-100 flex items-center justify-center">
+            <div className="relative w-full h-48 bg-gray-900/50 flex items-center justify-center">
                 <Image
                     src={imageSrc}
                     alt={title}
                     fill
-                    className="object-contain p-4 transition-opacity duration-300 group-hover:opacity-80"
+                    className="object-contain p-4 transition-opacity duration-300 group-hover:opacity-100 opacity-90"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     priority={false}
                 />
@@ -37,20 +37,27 @@ const ProductCard: React.FC<ProductCardProps> = ({ title, series, imageSrc, link
 
             {/* Content */}
             <div className="p-5">
-                <h3 className="text-xl font-bold text-gray-800 mb-1 flex items-center transition-colors duration-200 group-hover:text-emerald-600">
-                    <Lightbulb className="w-5 h-5 mr-2 text-green-600 group-hover:text-emerald-700 transition-colors" />
+                <h3 className="text-xl font-bold text-gray-700 dark:text-gray-100 mb-1 flex items-center transition-colors duration-200 group-hover:text-neon-blue">
+                    <div className="relative w-5 h-5 mr-2">
+                        <Image
+                            src="/images/v_icon.png"
+                            alt="V Icon"
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
                     {title}
                 </h3>
-                <p className="text-sm font-semibold text-teal-600 mb-3">{series}</p>
+                <p className="text-sm font-semibold text-neon-green mb-3 drop-shadow-[0_0_5px_rgba(57,255,20,0.5)]">{series}</p>
 
                 {description && (
-                    <p className="text-gray-500 text-sm mb-4 line-clamp-2">
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
                         {description}
                     </p>
                 )}
 
                 {/* Call to Action Link */}
-                <span className="w-full inline-flex justify-start items-center text-sm font-medium text-emerald-500 group-hover:text-emerald-600 transition-colors">
+                <span className="w-full inline-flex justify-start items-center text-sm font-medium text-neon-blue group-hover:text-cyan-300 transition-colors">
                     <FileText className="w-4 h-4 mr-2" />
                     ดูรายละเอียดเพิ่มเติม
                 </span>
@@ -60,35 +67,35 @@ const ProductCard: React.FC<ProductCardProps> = ({ title, series, imageSrc, link
 };
 
 
-// *** 2. ข้อมูลผลิตภัณฑ์ (อัปเดต: มี 4 รายการครบถ้วน) ***
+// *** 2. ข้อมูลผลิตภัณฑ์ (จัดเรียงตามลำดับ: T8, High Bay, Flood Light, Street Lamp) ***
 const PRODUCTS_DATA: ProductCardProps[] = [
-    {
-        title: "LED High Bay Lighting",
-        series: "GK-Series (20W - 70W)",
-        imageSrc: "/images/led-high-bay-gk20-70.png", // ตรวจสอบว่ามีไฟล์นี้ใน public/images/
-        linkHref: "/products/high-bay-gk-series-20-70",
-        description: "ไฟ LED High Bay สำหรับโรงงาน คลังสินค้า และพื้นที่ที่มีเพดานสูง (รุ่นประหยัดพลังงาน)",
-    },
-    {
-        title: "LED Street Light",
-        series: "LD-Series",
-        imageSrc: "/images/led-street-light-ld.png", // ตรวจสอบว่ามีไฟล์นี้ใน public/images/
-        linkHref: "/products/street-light-ld-series",
-        description: "ไฟถนน LED ประสิทธิภาพสูง กันน้ำ กันฝุ่น ทนทาน เหมาะสำหรับการใช้งานภายนอกอาคาร",
-    },
     {
         title: "LED T8 Tube Light",
         series: "LRG-Series",
-        imageSrc: "/images/led-t8-tube-lrg.png", // ตรวจสอบว่ามีไฟล์นี้ใน public/images/
-        linkHref: "/products/t8-tube-lrg-series",
+        imageSrc: "/images/led-t8-tube-lrg.png",
+        linkHref: "/products/t8-tube",
         description: "หลอดไฟ LED T8 สำหรับการใช้งานทั่วไปในออฟฟิศ อาคารพาณิชย์ และที่พักอาศัย",
     },
     {
         title: "LED High Bay Lighting",
-        series: "GK-Series (75W - 240W)",
-        imageSrc: "/images/led-high-bay-gk75-240.png", // ตรวจสอบว่ามีไฟล์นี้ใน public/images/
-        linkHref: "/products/high-bay-gk-series-75-240",
-        description: "ไฟ LED High Bay รุ่นกำลังสูง สำหรับพื้นที่อุตสาหกรรมขนาดใหญ่ที่ต้องการแสงสว่างเข้มข้น",
+        series: "GK-Series",
+        imageSrc: "/images/led-high-bay-gk20-70.png",
+        linkHref: "/products/high-bay",
+        description: "ไฟ LED High Bay สำหรับโรงงาน คลังสินค้า และพื้นที่ที่มีเพดานสูง",
+    },
+    {
+        title: "LED Flood Light",
+        series: "GT-Series",
+        imageSrc: "/images/led-flood-light.png",
+        linkHref: "/products/flood-light",
+        description: "LED ประสิทธิภาพสูง ออกแบบมาเพื่อส่องสว่างพื้นที่ภายนอก และ บริเวณกว้าง เช่น ลานจอดรถ, สนามกีฬา, ป้ายโฆษณา, หรือการส่องสว่างตัวอาคาร",
+    },
+    {
+        title: "LED Street Lamp",
+        series: "LD-Series",
+        imageSrc: "/images/led-street-light-ld.png",
+        linkHref: "/products/street-light",
+        description: "ไฟถนน LED ประสิทธิภาพสูง กันน้ำ กันฝุ่น ทนทาน เหมาะสำหรับการใช้งานภายนอกอาคาร",
     },
 ];
 
@@ -105,15 +112,15 @@ export default function ProductGallerySection({
 }: ProductGallerySectionProps) {
 
     return (
-        <section className="py-16 md:py-24 bg-gray-50">
+        <section className="py-16 md:py-24 bg-transparent">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Header Section */}
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+                    <h2 className="text-4xl sm:text-5xl font-extrabold text-neon-blue tracking-tight mb-3 drop-shadow-[0_0_10px_rgba(0,243,255,0.6)]">
                         {mainTitle}
                     </h2>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-400 max-w-2xl mx-auto">
                         {subTitle}
                     </p>
                 </div>

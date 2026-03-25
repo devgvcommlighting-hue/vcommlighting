@@ -13,7 +13,7 @@ import type { Metadata } from 'next';
 export default function AboutPage() {
     return (
         // ลบ className="min-h-screen flex flex-col pt-20" ออก
-        <div className="py-1">
+        <div>
             {/*
                 Header ถูกย้ายไปที่ layout.tsx แล้ว
                 ลบ <Header /> ออก
@@ -21,13 +21,13 @@ export default function AboutPage() {
                 main component ก็ถูกย้ายไปที่ layout.tsx แล้ว
                 ดังนั้นเนื้อหาในหน้านี้จะอยู่ใน div ที่เป็น children ของ <main>
             */}
-            
+
             <HeroSection />
-            <ServicesSection /> 
+            <ServicesSection />
             <ContactCtaSection />
             <ProductsSection />
             <ClientLogosSection />
-            
+
         </div>
     );
 }

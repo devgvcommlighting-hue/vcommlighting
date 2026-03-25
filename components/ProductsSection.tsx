@@ -3,22 +3,8 @@
 import React from 'react';
 import ProductCard from './ProductCard';
 
-// ข้อมูลสินค้า (อ้างอิงจากภาพตัวอย่าง)
+// ข้อมูลสินค้า (จัดเรียงตามลำดับที่ต้องการ)
 const productsData = [
-    {
-        imageUrl: '/images/ex-products400.png', // ต้องเตรียมรูปภาพนี้
-        title: 'LED High Bay Light',
-        description:
-            'โคมไฟไฮเบย์ LED สำหรับโรงงานและคลังสินค้าขนาดเล็กถึงกลาง',
-        link: '/products/high-bay', // แนะนำให้ใช้ลิงก์เฉพาะเจาะจงมากขึ้น
-    },
-    {
-        imageUrl: '/images/ex-products400.png', // ต้องเตรียมรูปภาพนี้
-        title: 'LED Street Light',
-        description:
-            'ไฟถนน LED ที่ออกแบบมาเพื่อทนทานต่อสภาพแวดล้อมภายนอกอาคาร',
-        link: '/products/street-light', // แนะนำให้ใช้ลิงก์เฉพาะเจาะจงมากขึ้น
-    },
     {
         imageUrl: '/images/ex-products400.png', // ต้องเตรียมรูปภาพนี้
         title: 'LED T8 Tube Light',
@@ -30,22 +16,36 @@ const productsData = [
         imageUrl: '/images/ex-products400.png', // ต้องเตรียมรูปภาพนี้
         title: 'LED High Bay Light',
         description:
-            'หลอดไฟ LED T8 GK Series 75W 240W ทางเลือกที่ประหยัดและเป็นมิตรต่อสิ่งแวดล้อม',
-        link: '/products/high-bay-gk-series-75-240', // แนะนำให้ใช้ลิงก์เฉพาะเจาะจงมากขึ้น
+            'โคมไฟไฮเบย์ LED สำหรับโรงงานและคลังสินค้าขนาดเล็กถึงกลาง',
+        link: '/products/high-bay', // แนะนำให้ใช้ลิงก์เฉพาะเจาะจงมากขึ้น
+    },
+    {
+        imageUrl: '/images/ex-products400.png', // ต้องเตรียมรูปภาพนี้
+        title: 'LED Flood Light',
+        description:
+            'ไฟส่องสว่าง LED กำลังสูง เหมาะสำหรับพื้นที่กลางแจ้งและสนามกีฬา',
+        link: '/products/flood-light', // แนะนำให้ใช้ลิงก์เฉพาะเจาะจงมากขึ้น
+    },
+    {
+        imageUrl: '/images/ex-products400.png', // ต้องเตรียมรูปภาพนี้
+        title: 'LED Street Lamp',
+        description:
+            'ไฟถนน LED ที่ออกแบบมาเพื่อทนทานต่อสภาพแวดล้อมภายนอกอาคาร',
+        link: '/products/street-light', // แนะนำให้ใช้ลิงก์เฉพาะเจาะจงมากขึ้น
     },
 ];
 
 export default function ProductsSection() {
     return (
-        <section className="py-16 md:py-24 bg-white">
+        <section className="py-16 md:py-24 bg-white dark:bg-transparent">
             <div className="container mx-auto px-4 md:px-8">
 
                 {/* Header Section (ตามภาพตัวอย่าง) */}
                 <div className="text-center mb-12">
-                    <h2 className="text-4xl md:text-5xl font-light uppercase tracking-widest text-gray-800">
+                    <h2 className="text-4xl md:text-5xl font-light uppercase tracking-widest text-gray-800 dark:text-white">
                         QUALITY PRODUCTS
                     </h2>
-                    <p className="text-lg text-gray-600 mt-2">
+                    <p className="text-lg text-gray-600 dark:text-gray-300 mt-2">
                         เราคัดสรรเฉพาะสินค้าที่มีคุณภาพ ผ่านการรับรองมาตรฐานในระดับสากล
                     </p>
                 </div>

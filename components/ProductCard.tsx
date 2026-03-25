@@ -29,20 +29,20 @@ export default function ProductCard({ imageUrl, title, description, linkHref }: 
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl md:text-2xl font-light uppercase tracking-widest text-gray-800 mb-4 border-b border-gray-300 pb-2 transition-colors duration-300 group-hover:text-green-600">
+                <h3 className="text-xl md:text-2xl font-light uppercase tracking-widest text-gray-500 mb-4 border-b border-gray-300 pb-2 transition-colors duration-300 group-hover:text-green-600">
                     {title}
                 </h3>
             </Link> {/* ปิด Link ตรงนี้ */}
 
             {/* Description */}
-            <p className="text-sm text-gray-600 mb-8 min-h-[80px]">
+            <p className="text-sm text-gray-400 mb-8 min-h-[80px]">
                 {description}
             </p>
 
             {/* Read More Button (ยังคงเดิมเพื่อเป็นปุ่มแยก) */}
             <Link
                 href={linkHref}
-                className="inline-block border border-gray-400 text-gray-700 font-semibold py-3 px-6 transition-colors duration-300 hover:bg-gray-700 hover:text-white uppercase text-xs tracking-wider" // ปรับสี hover ให้โดดเด่นขึ้น
+                className="inline-block border border-gray-400 text-gray-600 font-semibold py-3 px-6 transition-colors duration-300 hover:bg-gray-700 hover:text-white uppercase text-xs tracking-wider" // ปรับสี hover ให้โดดเด่นขึ้น
             >
                 READ MORE
             </Link>

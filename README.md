@@ -53,18 +53,23 @@ VCOMM พร้อมที่จะร่วมมือกับลูกค�
 
 ### 🚀 การเริ่มต้น (Local Setup)
 
-1.  **Clone Repository:**
+1. **Clone Repository:**
+
     ```bash
     git clone [Your-GitHub-URL]
     cd vcommlighting.com
     ```
-2.  **Install Dependencies:**
+
+2. **Install Dependencies:**
+
     ```bash
     npm install
     # หรือ
     yarn install
     ```
-3.  **Run Development Server:**
+
+3. **Run Development Server:**
+
     ```bash
     npm run dev
     # หรือ
@@ -81,4 +86,4 @@ VCOMM พร้อมที่จะร่วมมือกับลูกค�
 
 * **ที่อยู่:** 516/132 Soi Ramkhamhang39 (Thepleela1), Wangtonglang, Bangkok THAILAND 10310
 * **โทรศัพท์:** 061-3289536
-* **อีเมล:** contactvcomm@gmail.com
+* **อีเมล:** <contactvcomm@gmail.com>

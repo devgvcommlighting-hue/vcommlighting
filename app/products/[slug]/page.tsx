@@ -15,12 +15,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     const { slug } = await params;
 
-    // แปลง slug เป็นชื่อที่อ่านได้ (เช่น 'high-bay-gk-series-20-70' -> 'LED High Bay Light (20W - 70W)')
+    // แปลง slug เป็นชื่อที่อ่านได้
     const titleMap: Record<string, string> = {
-        'high-bay-gk-series-20-70': 'LED High Bay Light (20W - 70W)',
-        'street-light-ld-series': 'LED Street Light (LD-Series)',
-        't8-tube-lrg-series': 'LED T8 Tube Light (LRG-Series)',
-        'high-bay-gk-series-75-240': 'LED High Bay Light (75W - 240W)',
+        't8-tube': 'LED T8 Tube Light',
+        'high-bay': 'LED High Bay Light',
+        'flood-light': 'LED Flood Light',
+        'street-light': 'LED Street Lamp',
     };
 
     const productTitle = titleMap[slug] || 'รายละเอียดผลิตภัณฑ์';
@@ -45,7 +45,7 @@ export default async function ProductDetailPage({
     const { slug } = await params;
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 pt-24">
             <ProductDetail slug={slug} />
         </div>
     );
@@ -57,10 +57,10 @@ export default async function ProductDetailPage({
 // ฟังก์ชันนี้จะบอก Next.js ให้สร้างหน้าเหล่านี้ล่วงหน้าในระหว่าง build time (Static Site Generation - SSG)
 export async function generateStaticParams() {
     const slugs = [
-        'high-bay-gk-series-20-70',
-        'street-light-ld-series',
-        't8-tube-lrg-series',
-        'high-bay-gk-series-75-240',
+        't8-tube',
+        'high-bay',
+        'flood-light',
+        'street-light',
     ];
 
     return slugs.map((slug) => ({

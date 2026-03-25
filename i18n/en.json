@@ -1,14 +1,88 @@
 {
     "header": {
-        "home": "HOME",
-        "about": "ABOUT US",
-        "products": "PRODUCTS",
-        "service": "SERVICE",
-        "case": "CASE COLLECTION"
+        "home": "Home",
+        "about": "About Us",
+        "products": "Products",
+        "service": "Service",
+        "case": "Case Collection",
+        "toggleMenu": "Menu",
+        "switchToThai": "Switch to Thai",
+        "switchToEnglish": "Switch to English"
     },
     "hero": {
-        "tagline_line1": "Ecological for the Future",
-        "tagline_line2": "Ecological for the Future",
-        "button": "Dairy Products"
+        "tagline_line1": "Ecological for",
+        "tagline_line2": "the Future",
+        "description": "Discover the perfect lighting solutions for factories, warehouses, and streets.",
+        "button": "LED Products"
+    },
+    "about": {
+        "title": "About Us",
+        "subtitle": "Leader in LED Lighting Technology and Energy Saving Solutions",
+        "profile_title": "Company Profile",
+        "profile_desc1": "VCOMM DIGITAL (THAILAND) CO.,LTD. (VCOMM) was established in 2017 with a vision to be a leader in lighting innovation and automated control systems. We focus on developing technologies that enhance energy management efficiency for our clients.",
+        "profile_desc2": "We offer high-quality products covering all needs, from LED bulbs for commercial buildings, industrial factories, warehouses, to public lighting and street lights.",
+        "tech_title": "Technology & Innovation for Sustainability",
+        "tech_intro": "VCOMM has created numerous excellent innovations in Automation and Intelligent Control, propelling us to become a leading lighting technology company.",
+        "tech_desc": "We use the IES Integrated Energy Management System, which we developed in-house, to analyze and manage energy consumption precisely:",
+        "tech_list1": "Energy control in Manufacturing Equipment",
+        "tech_list2": "Optimizing energy usage of Central Air Conditioning Systems",
+        "tech_outro": "Our system helps customers discover energy issues in advance and take prompt corrective actions, which is key to reducing environmental impact.",
+        "proof_title": "Proven Reliability & Results",
+        "proof_desc": "Our mission is to create maximum value for customers by reducing energy consumption by 20%-80% through our solutions. We are trusted by many leading clients across various industries in Thailand.",
+        "vision_title": "Our Vision",
+        "vision_desc": "To be the leading Smart Ecological Lighting Solution Provider, driving Thai businesses towards sustainability with clean energy and smart technology."
+    },
+    "service": {
+        "title": "Our Services",
+        "intro": "Vcommlighting offers comprehensive solutions for every business need.",
+        "highlight_title": "Maximize Efficiency & Business Value",
+        "highlight_desc": "We help reduce energy costs and increase operational efficiency with cutting-edge LED technology.",
+        "import_title": "Import Service",
+        "import_desc": "Importing international standard products with full customs clearance services.",
+        "warehouse_title": "Warehouse Service",
+        "warehouse_desc": "Standardized warehouse, efficient stock management, and fast delivery.",
+        "consult_title": "Consultation",
+        "consult_desc": "Consulting on energy saving, lighting system design, and ROI calculation.",
+        "cta_button": "Get Free Consultation"
+    },
+    "products": {
+        "title": "Products",
+        "gallery_title": "High Quality LED Products",
+        "gallery_subtitle": "Vcommlighting presents energy-saving lighting solutions for every application.",
+        "view_detail": "View Details",
+        "t8": {
+            "title": "LED T8 Tube Light",
+            "desc": "LED T8 tubes for general use in offices, commercial buildings, and residences."
+        },
+        "highbay": {
+            "title": "LED High Bay Lighting",
+            "desc": "LED High Bay lights for factories, warehouses, and high-ceiling areas (Energy Saving Series)."
+        },
+        "floodlight": {
+            "title": "LED Flood Light",
+            "desc": "High-power LED flood lights suitable for outdoor areas and sports fields."
+        },
+        "street": {
+            "title": "LED Street Lamp",
+            "desc": "High-efficiency LED street lights, waterproof, dustproof, durable, suitable for outdoor use."
+        },
+        "catalog_btn": "View Full Catalog"
+    },
+    "case": {
+        "title": "Case Collection & Project Success",
+        "subtitle": "We build trust with results: 20%-80% energy reduction through our high-quality lighting solutions and equipment.",
+        "section_title": "Our Successful Case Collections",
+        "item_title_prefix": "Project:"
+    },
+    "footer": {
+        "company_name": "VCOMM DIGITAL (THAILAND) CO.,LTD.",
+        "quick_links": "Quick Links",
+        "services": "Services",
+        "contact": "Contact",
+        "import": "Import",
+        "warehouse": "Warehouse",
+        "logistics": "Logistics",
+        "address": "516/132 Soi Ramkhamhang39 (Thepleela1), Wangtonglang, Bangkok THAILAND 10310",
+        "rights": "All rights reserved."
     }
 }

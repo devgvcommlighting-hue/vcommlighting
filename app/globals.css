@@ -1,8 +1,40 @@
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
 
 :root {
+  /* Light Mode (Default) */
   --background: #ffffff;
-  --foreground: #285827;
+  /* Pure White as requested */
+  --foreground: #1f2937;
+  /* Gray 800 - Dark Grey Text */
+
+  /* Friendly Warm Colors (Light Mode) */
+  --neon-blue: #2563eb;
+  /* Darker Blue for contrast on light bg */
+  --neon-pink: #d97706;
+  /* Darker Amber */
+  --neon-green: #059669;
+  /* Darker Emerald */
+  --neon-yellow: #d97706;
+  /* Warm Yellow/Orange */
+}
+
+.dark {
+  /* Dark Mode */
+  --background: #333333;
+  /* Neutral Grey as requested */
+  --foreground: #e0e0e0;
+  /* Light Text */
+
+  /* Friendly Warm Colors (Dark Mode) */
+  --neon-blue: #60a5fa;
+  /* Soft Blue */
+  --neon-pink: #f59e0b;
+  /* Warm Amber */
+  --neon-green: #34d399;
+  /* Soft Emerald */
+  --neon-yellow: #fbbf24;
+  /* Warm Yellow */
 }
 
 @theme inline {
@@ -10,19 +42,94 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #285827;
-    --foreground: #ededed;
-  }
+  --color-neon-blue: var(--neon-blue);
+  --color-neon-pink: var(--neon-pink);
+  --color-neon-green: var(--neon-green);
+  --color-neon-yellow: var(--neon-yellow);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', sans-serif;
+  /* Switching to a friendly sans like Inter if available, or just letting default sans take over neatly */
+}
+
+@layer utilities {
+
+  /* Removed aggressive text-shadows for a cleaner, flatter look */
+  .text-neon-blue {
+    color: var(--neon-blue);
+  }
+
+  .text-neon-pink {
+    color: var(--neon-pink);
+  }
+
+  .text-neon-green {
+    color: var(--neon-green);
+  }
+
+  /* Removed aggressive box-shadows (glows) */
+  .box-neon-blue {
+    border: 1px solid var(--neon-blue);
+    /* No shadow or very subtle */
+  }
+
+  .box-neon-pink {
+    border: 1px solid var(--neon-pink);
+  }
+
+  .box-neon-green {
+    border: 1px solid var(--neon-green);
+  }
+
+  /* Typography Standardization */
+  .page-title {
+    font-size: 2.25rem;
+    /* text-4xl */
+    line-height: 2.5rem;
+    font-weight: 800;
+    /* font-extrabold */
+    margin-bottom: 1.5rem;
+    /* mb-6 */
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
+  }
+
+  @media (min-width: 768px) {
+    .page-title {
+      font-size: 3rem;
+      /* md:text-5xl */
+      line-height: 1;
+    }
+  }
+
+  .section-title {
+    font-size: 1.875rem;
+    /* text-3xl */
+    line-height: 2.25rem;
+    font-weight: 700;
+    /* font-bold */
+    margin-bottom: 1.5rem;
+    /* mb-6 */
+    padding-bottom: 0.5rem;
+    /* pb-2 */
+    border-bottom-width: 1px;
+    letter-spacing: -0.025em;
+    /* tracking-tight */
+  }
+
+  .body-text {
+    font-size: 1.125rem;
+    /* text-lg */
+    line-height: 1.75;
+    /* leading-relaxed (1.625 is strict relaxed in tailwind, but 1.75 is often better for reading) */
+    color: #d1d5db;
+    /* text-gray-300 */
+    margin-bottom: 1rem;
+  }
 }
 
 @layer utilities {
@@ -58,18 +165,6 @@ body {
 }
 
 @layer utilities {
-
-  /* Keyframes สำหรับ Fade In Up (ที่เราเพิ่มไปก่อนหน้านี้) */
-  @keyframes fadeInUp {
-    /* ... */
-  }
-
-  /* Utility Class สำหรับ Fade In Up Animation */
-  .animate-fadeInUp {
-    /* ... */
-  }
-
-  /* ... */
 
   /* --- Keyframes สำหรับ Logo Slider --- */
   @keyframes slide {

@@ -1,7 +1,7 @@
 // app/about/page.tsx
 
 // **ต้อง import AboutUs Component ที่เราสร้างไว้ในคำตอบแรก**
-import AboutUs from '@/components/AboutUs'; 
+import AboutUs from '@/components/AboutUs';
 import ContactCtaSection from '@/components/ContactCtaSection';
 import type { Metadata } from 'next';
 
@@ -15,16 +15,19 @@ export default function AboutPage() {
     return (
         // ลบ className="py-1" ออก เพราะ AboutUs component มี padding ของตัวเองแล้ว
         // <div className="py-1"> 
-        <div>
-            
-            {/* *** ส่วนเนื้อหาหลักของหน้า About Us ***
+        <section className="py-16 sm:py-20 bg-transparent text-gray-200">
+
+            <div className="">
+
+                {/* ส่วนกระตุ้นให้ติดต่อ (สามารถเก็บไว้ได้) */}
+                <ContactCtaSection />
+
+                {/* *** ส่วนเนื้อหาหลักของหน้า About Us ***
                 ใช้ AboutUs Component ที่มีเนื้อหา Profile ของบริษัท
             */}
-            <AboutUs />
+                <AboutUs />
 
-            {/* ส่วนกระตุ้นให้ติดต่อ (สามารถเก็บไว้ได้) */}
-            <ContactCtaSection />
-            
-        </div>
+            </div>
+        </section>
     );
 }

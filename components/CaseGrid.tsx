@@ -3,92 +3,155 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Case, caseData } from '@/types/case'; // สมมติว่าไฟล์อยู่ใน types/case.ts
-import CaseDetailModal from './CaseDetailModal'; // จะสร้างในขั้นตอนที่ 3
+import { useI18n } from '../hooks/use-i18n';
+import { X } from 'lucide-react';
 
-// *************************************************************
-// Component: CaseCard
-// *************************************************************
-interface CaseCardProps {
-    caseItem: Case;
-    onClick: (caseItem: Case) => void;
+// *** 1. Data Definitions ***
+interface CaseItem {
+    id: string;
+    imageSrc: string;
+    title: string;          // e.g., "Project: Factory Lighting Upgrade"
+    location?: string;      // e.g., "Amata Nakorn"
+    description?: string;   // Short description
 }
 
-const CaseCard: React.FC<CaseCardProps> = ({ caseItem, onClick }) => {
+const CASE_ITEMS: CaseItem[] = [
+    {
+        id: '1',
+        imageSrc: '/images/cases/led-mining-lamp-1.jpg',
+        title: 'Project: Industrial Mining Lighting',
+        location: 'Saraburi',
+        description: 'Installed high-durability LED mining lamps for enhanced visibility and safety.'
+    },
+    {
+        id: '2',
+        imageSrc: '/images/cases/led-mining-lamp-2.jpg',
+        title: 'Project: Heavy Machinery Workshop',
+        location: 'Rayong',
+        description: 'High-bay lighting solution for heavy equipment maintenance area.'
+    },
+    // ... (Add more items or fetch from API)
+    {
+        id: '3',
+        imageSrc: '/images/cases/led-mining-lamp-3.jpg',
+        title: 'Project: Warehouse Distribution Center',
+        location: 'Samut Prakan',
+        description: 'Energy-efficient lighting for 24/7 logistics operation.'
+    },
+    {
+        id: '4',
+        imageSrc: '/images/cases/daily-chemical-packaging.jpg',
+        title: 'Project: Chemical Packaging Line',
+        location: 'Chonburi',
+        description: 'Clean room lighting standards for chemical manufacturing.'
+    },
+    {
+        id: '5',
+        imageSrc: '/images/cases/mechanical-equipment.jpg',
+        title: 'Project: Mechanical Equipment Plant',
+        location: 'Ayutthaya',
+        description: 'Optimized lighting for precision mechanical assembly.'
+    },
+    {
+        id: '6',
+        imageSrc: '/images/cases/led-straight-tube-lamp.jpg',
+        title: 'Project: Office Building Retrofit',
+        location: 'Bangkok',
+        description: 'Replaced florescent tubes with LED Straight Tube Lamps for 60% energy savings.'
+    },
+];
+
+// *** 2. CaseCard Component ***
+const CaseCard = ({ item, onClick }: { item: CaseItem; onClick: (item: CaseItem) => void }) => {
     return (
-        <div 
-            className="group relative overflow-hidden rounded-lg shadow-xl cursor-pointer transition-transform duration-300 hover:scale-[1.03] hover:shadow-2xl bg-white/10"
-            onClick={() => onClick(caseItem)}
-            role="button"
-            aria-label={`View details for ${caseItem.title}`}
+        <div
+            className="group relative cursor-pointer overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg transition-all hover:-translate-y-1 hover:shadow-2xl hover:bg-white/10"
+            onClick={() => onClick(item)}
         >
-            {/* Image */}
-            <div className="w-full h-48 sm:h-64 relative">
+            <div className="relative aspect-video w-full overflow-hidden">
                 <Image
-                    src={caseItem.imageSrc}
-                    alt={caseItem.title}
+                    src={item.imageSrc}
+                    alt={item.title}
                     fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    style={{ objectFit: 'cover' }}
-                    className="transition-opacity duration-500 group-hover:opacity-80"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                
-                {/* Overlay Text Container */}
-                <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/80 to-transparent p-4">
-                    <h3 className="text-xl font-bold text-white relative z-10 transition-colors duration-300">
-                        {caseItem.title}
-                    </h3>
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-center justify-center">
+                    <span className="rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-gray-900 shadow-lg">
+                        View Project
+                    </span>
                 </div>
-                
-                {/* Hover Effect - Subtle Highlight */}
-                <div className="absolute inset-0 bg-transparent group-hover:bg-green-500/20 transition-colors duration-300"></div>
             </div>
-            
+            <div className="p-4">
+                <h3 className="text-lg font-bold text-gray-700 dark:text-gray-100 group-hover:text-neon-blue transition-colors">
+                    {item.title}
+                </h3>
+                {item.location && (
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 flex items-center">
+                        <span className="mr-1">📍</span> {item.location}
+                    </p>
+                )}
+            </div>
         </div>
     );
 };
 
-// *************************************************************
-// Component: CaseGrid (Main Component)
-// *************************************************************
-const CaseGrid: React.FC = () => {
-    const [selectedCase, setSelectedCase] = useState<Case | null>(null);
-
-    const handleCardClick = (caseItem: Case) => {
-        setSelectedCase(caseItem);
-    };
-
-    const handleCloseModal = () => {
-        setSelectedCase(null);
-    };
+export default function CaseGrid() {
+    const { t } = useI18n(); // Use hook
+    const [selectedCase, setSelectedCase] = useState<CaseItem | null>(null);
 
     return (
         <section className="container mx-auto px-4 py-12">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-800 text-center mb-10">
-                Our Successful Case Collections
+            <h2 className="section-title text-neon-blue text-center mb-10 border-none">
+                {t('case.section_title')}
             </h2>
-            
-            {/* Case Grid Layout: 3 คอลัมน์สำหรับ Desktop, 2 คอลัมน์สำหรับ Tablet, 1 คอลัมน์สำหรับ Mobile */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {caseData.map((caseItem) => (
-                    <CaseCard 
-                        key={caseItem.id} 
-                        caseItem={caseItem} 
-                        onClick={handleCardClick}
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {CASE_ITEMS.map((item) => (
+                    <CaseCard
+                        key={item.id}
+                        item={item}
+                        onClick={setSelectedCase}
                     />
                 ))}
             </div>
 
-            {/* Modal Component */}
+            {/* Simple Modal for Case Detail */}
             {selectedCase && (
-                <CaseDetailModal 
-                    caseItem={selectedCase} 
-                    isOpen={!!selectedCase} 
-                    onClose={handleCloseModal} 
-                />
+                <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setSelectedCase(null)}>
+                    <div className="bg-white rounded-2xl overflow-hidden max-w-4xl w-full max-h-[90vh] flex flex-col md:flex-row relative" onClick={e => e.stopPropagation()}>
+                        <button
+                            className="absolute top-4 right-4 z-10 p-2 bg-white/50 rounded-full hover:bg-white text-gray-800 transition-colors"
+                            onClick={() => setSelectedCase(null)}
+                        >
+                            <X size={24} />
+                        </button>
+
+                        <div className="w-full md:w-1/2 relative h-64 md:h-auto bg-gray-200">
+                            <Image
+                                src={selectedCase.imageSrc}
+                                alt={selectedCase.title}
+                                fill
+                                className="object-cover"
+                            />
+                        </div>
+                        <div className="w-full md:w-1/2 p-8 overflow-y-auto">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-2">{selectedCase.title}</h3>
+                            {selectedCase.location && (
+                                <p className="text-sm font-semibold text-blue-600 mb-4 uppercase tracking-wider">
+                                    LOCATION: {selectedCase.location}
+                                </p>
+                            )}
+                            <div className="prose text-gray-600">
+                                <p>{selectedCase.description}</p>
+                                <p className="mt-4 text-sm text-gray-400 italic">
+                                    More details about the installation process, energy savings results, and client testimonials would go here.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             )}
         </section>
     );
-};
-
-export default CaseGrid;
+}

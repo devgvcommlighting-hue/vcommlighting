@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import RootLayoutProvider from "@/components/RootLayoutProvider"; // ใช้ @/ ตาม tsconfig.json
 
+import { ThemeProvider } from '@/components/ThemeProvider'; // Import ThemeProvider
+
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
@@ -29,14 +31,21 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             {/* FIX 2: ส่ง Class Name ลงไปใน Provider 
         แต่เราจะกำหนด Class Name ที่ body ใน Provider แทน
       */}
             <body className="antialiased">
-                <RootLayoutProvider fontClasses={fontClasses}>
-                    {children}
-                </RootLayoutProvider>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="light" // Default to light
+                    enableSystem={false} // Manual toggle only
+                    disableTransitionOnChange
+                >
+                    <RootLayoutProvider fontClasses={fontClasses}>
+                        {children}
+                    </RootLayoutProvider>
+                </ThemeProvider>
             </body>
         </html>
     );

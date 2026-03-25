@@ -12,7 +12,7 @@ const contactLinks = [
     {
         icon: SiLine,
         label: 'LINE',
-        href: 'https://line.me/ti/p/@vcommlighting', // แทนที่ด้วย Line ID จริง
+        href: 'https://line.me/ti/p/vcommlighting', // แทนที่ด้วย Line ID จริง
         color: 'bg-green-500',
         hover: 'hover:bg-green-600'
     },
@@ -76,7 +76,7 @@ export default function ContactCtaSection() {
                             <item.icon className="w-8 h-8 text-white mb-1" aria-hidden="true" />
                             {/* *** แก้ไขตรงนี้: ให้แสดง item.label ของทุกปุ่ม *** */}
                             <span className="text-white text-xs font-bold uppercase mt-1">
-                                {item.label} 
+                                {item.label}
                             </span>
                         </Link>
                     ))}

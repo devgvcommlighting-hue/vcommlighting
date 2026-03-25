@@ -1,51 +1,19 @@
-// components/Header.tsx (ส่วนที่แก้ไข)
+// components/Header.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useI18n } from '../hooks/use-i18n';
+import { useTheme } from 'next-themes'; // Import useTheme
+import { Sun, Moon } from 'lucide-react'; // Import Icons
 
-// *** 1. Translation Data และ Type Definitions (แก้ไข: contact -> case) ***
-const translations = {
-    en: {
-        header: {
-            home: 'Home',
-            about: 'About Us',
-            products: 'Products',
-            service: 'Service',
-            case: 'Case Collection', // <--- แก้ไขตรงนี้
-            toggleMenu: 'Header Menu', 
-            switchToThai: 'Switch to Thai',
-            switchToEnglish: 'Switch to English',
-        },
-    },
-    th: {
-        header: {
-            home: 'หน้าแรก',
-            about: 'เกี่ยวกับเรา',
-            products: 'สินค้า',
-            service: 'บริการ',
-            case: 'ผลงาน (Case Collection)', // <--- แก้ไขตรงนี้
-            toggleMenu: 'Header Menu',
-            switchToThai: 'สลับเป็นภาษาไทย',
-            switchToEnglish: 'สลับเป็นภาษาอังกฤษ',
-        },
-    },
-};
-
-type TranslationKeys = typeof translations;
-export type Locale = keyof TranslationKeys; 
-
-const menuItems = [
-    'home', 'about', 'products', 'service', 'case', // <--- แก้ไขตรงนี้
-    'toggleMenu', 'switchToThai', 'switchToEnglish'
-] as const;
-export type HeaderKeys = typeof menuItems[number]; 
+// Menu Items Keys matching json
+const menuItems = ['home', 'about', 'products', 'service', 'case'] as const;
+export type HeaderKeys = typeof menuItems[number];
 
 
-// *** 2. Inline SVG Icons (โค้ดส่วนนี้ยังคงเดิม) ***
-// ... (GlobeIcon, BarsIcon, TimesIcon code remains the same) ...
-
+// *** 2. Inline SVG Icons ***
 const GlobeIcon = ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor" className={className}>
         <path d="M288 32c-80.8 0-160.8 24.4-224 68.3v5.1L288 160l224-94.6v-5.1C448.8 56.4 368.8 32 288 32zM576 160.6c0-10.4-1.9-20.7-5.5-30.4L512 80c-25.9-10.7-53.7-16-81.8-16c-38.3 0-75.1 8-109 23.3L288 96l-3.2 1.4L183.1 64c-25.9-10.7-53.7-16-81.8-16c-38.3 0-75.1 8-109 23.3L5.5 130.2C1.9 140-.0 150.3 0 160.6c0 10.1 2.5 20 7.3 29.1L288 320l280.7-130.4c4.8-9.1 7.3-19.1 7.3-29.1zM288 352c-80.8 0-160.8 24.4-224 68.3v5.1L288 480l224-94.6v-5.1c-63.2-43.9-143.2-68.3-224-68.3zM576 352.6c0-10.4-1.9-20.7-5.5-30.4L512 288c-25.9-10.7-53.7-16-81.8-16c-38.3 0-75.1 8-109 23.3L288 320l-3.2 1.4L183.1 288c-25.9-10.7-53.7-16-81.8-16c-38.3 0-75.1 8-109 23.3L5.5 310.2C1.9 320-.0 330.3 0 340.6c0 10.1 2.5 20 7.3 29.1L288 480l280.7-130.4c4.8-9.1 7.3-19.1 7.3-29.1z" />
@@ -64,43 +32,40 @@ const TimesIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
-// *** 3. Header Props ***
 interface HeaderProps {
     isMenuOpen: boolean;
     toggleMenu: () => void;
-    locale: Locale; 
-    t: (key: `header.${HeaderKeys}`) => string; 
-    toggleLocale: () => void;
 }
 
 
-export default function Header({ isMenuOpen, toggleMenu, locale, t, toggleLocale }: HeaderProps) {
-    
-    const [isMounted, setIsMounted] = useState(false); 
+export default function Header({ isMenuOpen, toggleMenu }: HeaderProps) {
+    const { t, locale, toggleLocale } = useI18n(); // Global Hook
+    const { theme, setTheme } = useTheme();
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
         setIsMounted(true);
     }, []);
 
     const headerClass =
-        'fixed top-0 left-0 w-full z-50 transition-colors duration-300 backdrop-blur-sm bg-black/60';
+        'fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md bg-white/10 border-b border-white/20 shadow-lg';
 
-    const toggleMenuLabel = isMounted ? t('header.toggleMenu') : 'Header Menu'; 
-    const langToggleLabel = isMounted 
-        ? (locale === 'en' ? t('header.switchToThai') : t('header.switchToEnglish')) 
-        : (locale === 'en' ? 'Switch to Thai' : 'Switch to English'); 
-    
+    const toggleMenuLabel = isMounted ? t('header.toggleMenu') : 'Header Menu';
+    const langToggleLabel = isMounted
+        ? (locale === 'en' ? t('header.switchToThai') : t('header.switchToEnglish'))
+        : (locale === 'en' ? 'Switch to Thai' : 'Switch to English');
+
 
     return (
         <header className={headerClass}>
-            <div className="bg-emerald-500 container mx-auto flex justify-between items-center h-20 px-4 md:px-8">
+            <div className="container mx-auto flex justify-between items-center h-20 px-4 md:px-8">
 
                 {/* โลโก้ */}
                 <Link href="/" onClick={() => isMenuOpen && toggleMenu()}>
                     <Image
-                        src="/logo-web-removebg-preview.png" 
+                        src="/1000047467-removebg-preview.png"
                         alt="โลโก้ Vcommlighting"
-                        width={150} 
+                        width={150}
                         height={40}
                         className="h-10 w-auto invert dark:invert-0"
                         priority
@@ -110,11 +75,12 @@ export default function Header({ isMenuOpen, toggleMenu, locale, t, toggleLocale
                 {/* เมนูหลัก (Desktop) */}
                 <nav className="hidden md:flex items-center space-x-6">
                     {/* แสดงลิงก์เมนู 5 รายการแรก (home, about, products, service, case) */}
-                    {menuItems.slice(0, 5).map((item) => ( 
+                    {menuItems.slice(0, 5).map((item) => (
                         <Link
                             key={item}
                             href={`/${item === 'home' ? '' : item}`}
-                            className="text-white hover:text-yellow-400 transition-colors font-semibold uppercase text-sm tracking-widest"
+                            className="text-[#FFA500] hover:text-blue-500 dark:hover:text-yellow-400 transition-all font-semibold uppercase text-sm tracking-widest"
+                        // Apply text shadow only in dark mode via style or class if possible. simpler to remove inline style and use class.
                         >
                             {t(`header.${item}`)}
                         </Link>
@@ -124,18 +90,27 @@ export default function Header({ isMenuOpen, toggleMenu, locale, t, toggleLocale
                     <button
                         onClick={toggleLocale}
                         type="button"
-                        className="flex items-center space-x-2 p-2 rounded-full hover:bg-white/20 transition-colors text-white" 
+                        className="flex items-center space-x-2 p-2 rounded-full hover:bg-white/20 transition-colors text-[#FFA500]"
                         aria-label={langToggleLabel}
                     >
-                        <GlobeIcon className="text-xl w-5 h-5" />
-                        <span className="text-sm font-bold">
+                        <GlobeIcon className="text-xl w-5 h-5 text-[#FFA500]" />
+                        <span className="text-sm font-bold text-[#FFA500]">
                             {locale === 'en' ? 'TH' : 'EN'}
                         </span>
+                    </button>
+
+                    {/* Theme Toggle (Desktop) */}
+                    <button
+                        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                        className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/20 transition-colors text-[#FFA500]"
+                        aria-label="Toggle Theme"
+                    >
+                        {isMounted && theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
                     </button>
                 </nav>
 
                 {/* Mobile Menu Controls (Hamburger Only) */}
-                <div className="md:hidden flex items-center relative z-50"> 
+                <div className="md:hidden flex items-center relative z-50">
                     {/* Hamburger Icon */}
                     <button
                         onClick={toggleMenu}
@@ -144,8 +119,8 @@ export default function Header({ isMenuOpen, toggleMenu, locale, t, toggleLocale
                         aria-expanded={isMenuOpen ? 'true' : 'false'}
                         aria-label={toggleMenuLabel}
                     >
-                        {isMenuOpen 
-                            ? <TimesIcon className="w-6 h-6 block" /> 
+                        {isMenuOpen
+                            ? <TimesIcon className="w-6 h-6 block" />
                             : <BarsIcon className="w-6 h-6 block" />}
                     </button>
                 </div>
